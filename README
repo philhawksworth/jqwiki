@@ -1,0 +1,7 @@
+jQwiki (pronounced jay-quickie) is a self contained, simple wiki application.
+
+jQwiki delivers content in HTML and adds functionality with Javascript and the jQuery Javascript library.
+
+The data and application logic are all contained within a single file which you run in your browser.
+
+This project is just getting started. For news and announcements go to http://jqwiki.com or follow http://twitter.com/philhawksworth
