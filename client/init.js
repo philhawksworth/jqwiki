@@ -30,19 +30,24 @@ jqw.addEventHandlers = function() {
 		/*
 			TODO handle the commands.
 		*/
+		
 		return false;
 	});
 	
 };
 
+
 // Apply a template to build the UI.
 jqw.applyPageTemplate = function(name) {
+	
+	/*
+		TODO find the pieces of the template. (CSS, PageTemplate, ViewTemplate, EditTemplate...)
+	*/
+	
 	var id = jqw.entryID(name);
 	var template = $('#'+ id).find('div.entry-content pre').html();
-	
-	//find the pieces of the template. (CSS, PageTemplate, ViewTemplate, EditTemplate...)
-	
 	$('#wiki').empty().append($(template));
+
 };
 
 
@@ -57,9 +62,10 @@ jqw.applyTemplate = function(name) {
 jqw.displayListedEntries = function(name) {
 	var content = $('#'+jqw.entryID(name)).find('div.entry-content');
 	jqw.findEntryLinks(content).each(function(index) {
-		jqw.displayEntry( $(this).text() );
+		jqw.displayEntry($(this).text(), {position:'bottom'});
 	});;
 };
+
 
 // Find the Entry links in an element or string.
 jqw.findEntryLinks = function(source) {
@@ -67,33 +73,30 @@ jqw.findEntryLinks = function(source) {
 };
 
 
+// Display an entry in the main content area.
 jqw.displayEntry = function(name, options) {
-
-	// $('#content').append( $('#'+jqw.entryID(name)) );
 	
 	var defaults = {
-		template: 'ViewTemplate'
+		template: 'ViewTemplate',
+		position: 'top'
 	};
 	var opt = $.extend({}, defaults, options);
 	
 	//get the template.
 	var template = $($('#'+jqw.entryID(opt.template)).find('div.entry-content pre').clone().html());
-	console.log('template', name, template);
 		
 	// get the source data.
 	var source = $('#'+jqw.entryID(name));
 	var content = source.find(jqw.api.content).html();
-	// var title
-	// var	meta
-	// var tags
-
-	// console.log('content', content);
-	// console.log('target', template.find(jqw.api.content));
-	
-	
+	var title = source.find(jqw.api.title).html();
+	var meta = source.find(jqw.api.meta).html();
+	var tags = source.find(jqw.api.tags).html();
+		
 	//substitue the data from the entry.
-	template.find(jqw.api.content).html(name);
-	// console.log('template', name, template.html());
+	template.find(jqw.api.content).html(content);
+	template.find(jqw.api.title).html(title);
+	template.find(jqw.api.meta).html(meta);
+	template.find(jqw.api.tags).html(tags);
 		
 	//add the result to the display.
 	$('#content').append(template);
@@ -126,12 +129,11 @@ jqw.execute = function(args) {
 };
 
 
-
-
-// generate entry ID
+// generate an entry ID
 jqw.entryID = function(name) {
 	return "entry_" + name.replace(" ","_");
 };
+
 
 // generate entry natural name
 jqw.entryName = function(id) {
@@ -143,8 +145,10 @@ jqw.entryName = function(id) {
 // entry API.
 jqw.api = {
 	entry: 'div.hentry',
+	title: 'h2.entry-title',
 	content : 'div.entry-content',
-	modifier: 'dl.meta'
+	meta : 'dl.meta',
+	tags: 'ul.tags'
 };
 
 
