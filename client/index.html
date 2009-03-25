@@ -7,23 +7,186 @@
 	<title>jqwiki</title>
 	<meta name="generator" content="TextMate http_//macromates.com/">
 	<meta name="author" content="Phil Hawksworth">	
-	
-	<!-- naked styles -->
-	<link rel="stylesheet" href="naked.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<style type="text/css" media="screen">
+html, body, div, h1, h2, h3, h3, dl, dd, dt {
+	padding:0;
+	margin:0;
+}
 
-	<!-- default skin -->
-	<link rel="stylesheet" href="defaultSkin.css" type="text/css" media="screen" title="no title" charset="utf-8">
+body {
+	font:normal 12px/1.4 Georgia;
+	padding:1em;
+}
+
+a:link, a:visited {
+	color:#1E52CD;
+}
+a:hover, a:focus {
+	color:#DB7E08;
+}
+
+div.system {
+	display:none;
+}
+
+/*  FOUC avoideance. */
+html.js > div {
+	display:none;
+}
+
+html, body {
+	padding:0;
+}
+	
+#header {
+	background-color:#222;
+	color:#fff;
+	padding:10px;
+	text-align:center;
+}
+
+	#header h1,
+	#header h2 {
+		font-weight:normal;
+		line-height:1.2em;
+	}
+
+	#header h2 {
+		font-size:1.1em;
+		color:#bbb;
+	}
+	
+#controls {
+	padding:10px;
+	font-size:0.9em;
+	text-align:right;
+	background-color:#333;
+}
+
+	#controls a:link, #controls a:visited {
+		background-color:#000;
+		color:#fff;
+		padding:3px 9px;
+		margin-right:3px;
+		text-decoration:none;
+		-moz-border-radius:3px;			
+		-webkit-border-radius:3px;
+	}
+	#controls a:hover, #controls a:focus {
+		background-color:#1E52CD;
+		color:#fff;
+	}
+	
+
+div.hentry {
+	border-bottom:solid 1px #ddd;
+	margin:0;
+	padding:30px;
+}
+
+	div.hentry .entry-title {
+		font-size:2.5em;
+		letter-spacing:-1px;
+		line-height:1.1em;
+		margin-bottom:8px;
+	}
+
+	div.hentry dl.meta {
+		font-size:0.8em;
+		display:inline;
+	}
+		div.hentry dl.meta dt {
+			color:#444;
+			display:inline;
+			margin-right:0.5em;
+		}
+		div.hentry dl.meta dd {
+			color:#777;
+			display:inline;
+			margin-right:1em;
+		}
+	
+	div.hentry .entry-content {
+		text-align:justify;
+	}
+	
+	ul.tags {
+		list-style:none;
+		padding:0;
+		margin:0;
+		font-size:0.8em;
+	}
+		ul.tags li {
+			display:inline;
+			margin-right:3px;
+		}
+			ul.tags li a:link, ul.tags li a:visited {
+				background-color:#777;
+				color:#fff;
+				border-left:solid 5px #555;
+				padding:3px 9px 3px 6px;
+				text-decoration:none;
+				-moz-border-radius-topright:3px;			
+				-moz-border-radius-bottomright:3px;
+				-webkit-border-top-right-radius:3px;
+				-webkit-border-bottom-right-radius:3px;
+			}
+			ul.tags li a:hover, ul.tags li a:focus {
+				background-color:#1E52CD;
+				color:#fff;
+				border-left:solid 5px #036;
+			}
+
+
+#footer {
+	display:block;
+	padding:20px 30px;
+	text-align:right;
+	font-size:0.9em;
+	font-style:italic;
+	color:#777;
+	border-top:solid 4px #eee;
+}
+
+	#footer p {
+		padding:0;
+		margin:0.2em 0;
+	}
+
+	#footer a:link,	#footer a:visited {
+		color:#777;
+		margin:0 2px;
+		text-decoration:none;
+	}
+	#footer a:hover, #footer a:focus {
+		color:#333;
+		text-decoration:underline;
+	}
+
+	
+pre.code {
+	font-size:1em;
+	font-family:courier;
+	color:#00C7FF;
+	background:#111;
+	border:solid 1px #000;
+	padding:1em;
+	width:80%;
+	height:10em;
+	overflow:auto;
+}
+
+
+
+	</style>
 	
 	<script type="text/javascript" charset="utf-8">		
 		// Avoid a FOUC.
 		document.getElementsByTagName('html')[0].className = 'js';
-	</script>
-	
+	</script>	
 </head>
 <body>
 	
-
-
 	<!-- Target for UI -->
 	<div id='wiki'>
 		<div id='header'>
@@ -32,145 +195,308 @@
 		</div>			
 	</div>
 		
-	
 	<!-- Store of entries -->
 	<div id='store'>
-		
-		<!-- Content -->
-		<div class='hentry' id='entry_jqwiki'>
-			<h2 class='entry-title'>jqwiki</h2>
-			<dl class='meta'>
-				<dt>modifier</dt><dd>PhilHawksworth</dd>
-				<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
-			</dl>
-			<div class='entry-content'>
-				<p><a class='entryLink' href='#entry_jqwiki'>jqwiki</a> is an experiment initiated by <a class='entryLink' href='#entry_PhilHawksworth'>PhilHawksworth</a> originally based on <a href="http://TiddlyWiki.com/">TiddlyWiki</a>, the popular single page javascript wiki originally created by Jeremy Ruston and developed by <a href="http://osmosoft.com/">Osmosoft</a> and the TiddlyWiki community.</p>
-				<p><a class='entryLink' href='#entry_jqwiki'>jqwiki</a> is built using <a href="http_//jquery.com">jQuery</a> and is intended to demonstrate an unobtrusive use of Javascript.  If you disable Javascript in your browser, this page should continue to be visible and navigable, but the more advanced features, will only become available when Javascript is enabled in your browser.</p>
-				<p>Since <a class='entryLink' href='#entry_jqwiki'>jqwiki</a> exposes the html first, web crawlers and screen readers should be able to more easily understand it and find meaning in its contents.</p>		
-				<p>More info is available at <a href="http://jigglywiki.com">http://jigglywiki.com</a></p>
+
+		<!-- Content -->		
+<div class='hentry' id='entry_jQwiki'>
+	<h2 class='entry-title'>jQwiki</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<p><a class='entryLink' href='#entry_jQwiki'>jQwiki</a> is an experiment initiated by <a class='entryLink' href='#entry_PhilHawksworth'>PhilHawksworth</a> originally based on <a href="http://TiddlyWiki.com/">TiddlyWiki</a>, the popular single page javascript wiki originally created by Jeremy Ruston and developed by <a href="http://osmosoft.com/">Osmosoft</a> and the TiddlyWiki community.</p>
+		<p><a class='entryLink' href='#entry_jQwiki'>jQwiki</a> is built using <a href="http_//jquery.com">jQuery</a> and is intended to demonstrate an unobtrusive use of Javascript.  If you disable Javascript in your browser, this page should continue to be visible and navigable, but the more advanced features, will only become available when Javascript is enabled in your browser.</p>
+		<p>Since <a class='entryLink' href='#entry_jQwiki'>jQwiki</a> exposes the html first, web crawlers and screen readers should be able to more easily understand it and find meaning in its contents.</p>		
+		<p>More info is available at <a href="http://jigglywiki.com">http://jigglywiki.com</a></p>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_jQwiki' rel='tag'>jQwiki</a></li>
+		<li><a href='#entry_About' rel='tag'>About</a></li>
+	</ul>
+</div>
+<div class='hentry' id='entry_PhilHawksworth'>
+	<h2 class='entry-title'>PhilHawksworth</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<p>That's me!</p>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_People' rel='tag'>People</a></li>
+	</ul>
+</div>
+<div class='hentry script' id='entry_TestScript1'>
+	<h2 class='entry-title'>TestScript1</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<pre class='code'>
+			console.log('I was executed from the content of an entry when the page loaded');
+		</pre>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_People' rel='tag'>People</a></li>
+	</ul>
+</div>
+
+
+		<!-- System items -->
+<div class='hentry system' id='entry_DefaultTheme'>
+	<h2 class='entry-title'>DefaultTheme</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+
+		<pre class='code'>
+			
+			<div id='header'>
+				<h1 id='title'>jQwiki</h1>
+				<h2 id='subtitle'>A self contained wiki made with Javascript, HTML and a sprinkling of jQuery goodness. </h2>			
 			</div>
-			<ul class='tags'>
-				<li><a href='#entry_jqwiki' rel='tag'>jqwiki</a></li>
-				<li><a href='#entry_About' rel='tag'>About</a></li>
-			</ul>
-		</div>
-		
-		<div class='hentry' id='entry_PhilHawksworth'>
-			<h2 class='entry-title'>PhilHawksworth</h2>
-			<dl class='meta'>
-				<dt>modifier</dt><dd>PhilHawksworth</dd>
-				<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
-			</dl>
-			<div class='entry-content'>
-				<p>That's me!</p>
+			<div id='controls'><a href='#' title='Create a new entry' class='newEntry'>New entry</a><a href='#' title='Save the wiki' class='save'>Save</a><a href='#' title='Save a copy to your hardrive' class='download'>Save a copy</a></div>
+			<div id='content'></div>
+			<div id='footer'>
+				<p>jQwiki version 0.0.1</p>
+				<a href='http://validator.w3.org/check?uri=referer'>valid HTML</a> & <a href='http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fjigglywiki.com'>valid CSS</a>
 			</div>
-			<ul class='tags'>
-				<li><a href='#entry_People' rel='tag'>People</a></li>
-			</ul>
-		</div>	
-		
-		<div class='hentry script' id='entry_TestScript1'>
-			<h2 class='entry-title'>TestScript1</h2>
-			<dl class='meta'>
-				<dt>modifier</dt><dd>PhilHawksworth</dd>
-				<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
-			</dl>
-			<div class='entry-content'>
-				<pre class='code'>
-					console.log('I was executed from the content of an entry when the page loaded');
-				</pre>
-			</div>
-			<ul class='tags'>
-				<li><a href='#entry_People' rel='tag'>People</a></li>
-			</ul>
-		</div>
 
-
-		<!-- System -->
-		<div class='hentry system' id='entry_Default_Theme'>
-			<h2 class='entry-title'>Default Theme</h2>
-			<dl class='meta'>
-				<dt>modifier</dt><dd>PhilHawksworth</dd>
-				<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
-			</dl>
-			<div class='entry-content'>
-
-				<pre class='code'>
-					
-					<div id='header'>
-						<h1 id='title'>jQwiki</h1>
-						<h2 id='subtitle'>A self contained wiki made with Javascript, HTML and a sprinkling of jQuery goodness. </h2>			
-					</div>
-					<div id='controls'><a href='#' title='Create a new entry' class='newEntry'>New entry</a><a href='#' title='Save the wiki' class='save'>Save</a><a href='#' title='Save a copy to your hardrive' class='download'>Save a copy</a></div>
-					<div id='content'></div>
-					<div id='footer'>
-						<p>jQwiki version 0.0.1</p>
-						<a href='http://validator.w3.org/check?uri=referer'>valid HTML</a> & <a href='http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fjigglywiki.com'>valid CSS</a>
-					</div>
-
-				</pre>
-
-			</div>
-			<ul class='tags'>
-				<li><a href='#entry_system' rel='tag'>system</a></li>
-				<li><a href='#entry_template' rel='tag'>template</a></li>
-			</ul>
-		</div>
-		<div class='hentry system' id='entry_ViewTemplate'>
-			<h2 class='entry-title'>ViewTemplate</h2>
-			<dl class='meta'>
-				<dt>modifier</dt><dd>PhilHawksworth</dd>
-				<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
-			</dl>
-			<div class='entry-content'>
-
-				<pre class='code' cols='40' rows='5'>
-					
-					
-					
-					<div class='hentry' id='entry_'>
-						<h2 class='entry-title'></h2>
-						<dl class='meta'>
-
-						</dl>
-						<div class='entry-content'>
-		
-						</div>
-						<ul class='tags'>
-
-						</ul>
-					</div>
-					
-					
-
-				</pre>
-
-			</div>
-			<ul class='tags'>
-				<li><a href='#entry_system' rel='tag'>system</a></li>
-				<li><a href='#entry_template' rel='tag'>template</a></li>
-			</ul>
-		</div>
-		<div class='hentry system' id='entry_DefaultEntries'>
-			<h2 class='entry-title'>DefaultEntries</h2>
-			<dl class='meta'>
-				<dt>modifier</dt><dd>PhilHawksworth</dd>
-				<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
-			</dl>
-			<div class='entry-content'>
-				<a class='entryLink' href='#entry_jqwiki'>jqwiki</a>
-				<a class='entryLink' href='#entry_PhilHawksworth'>PhilHawksworth</a>
-			</div>
-			<ul class='tags'>
-				<li><a href='#entry_system' rel='tag'>system</a></li>
-				<li><a href='#entry_template' rel='tag'>template</a></li>
-			</ul>
-		</div>
+		</pre>
 
 	</div>
-	
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
+		<li><a href='#entry_template' rel='tag'>template</a></li>
+	</ul>
+</div>
+<div class='hentry system' id='entry_ViewTemplate'>
+	<h2 class='entry-title'>ViewTemplate</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+
+		<pre class='code' cols='40' rows='5'>
+			
+			
+			
+			<div class='hentry' id='entry_'>
+				<h2 class='entry-title'></h2>
+				<dl class='meta'>
+
+				</dl>
+				<div class='entry-content'>
+
+				</div>
+				<ul class='tags'>
+
+				</ul>
+			</div>
+			
+			
+
+		</pre>
+
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
+		<li><a href='#entry_template' rel='tag'>template</a></li>
+	</ul>
+</div>
+<div class='hentry system' id='entry_DefaultEntries'>
+	<h2 class='entry-title'>DefaultEntries</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<a class='entryLink' href='#entry_jqwiki'>jQwiki</a>
+		<a class='entryLink' href='#entry_PhilHawksworth'>PhilHawksworth</a>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
+		<li><a href='#entry_template' rel='tag'>template</a></li>
+	</ul>
+</div>
+
+
+
+
+	</div>
+
+	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script> -->	
 	<script src="jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
-<!--	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script> -->
-	<script src="./init.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+		
+// Let's not pollute the global namespace.
+var jqw = {};
+
+
+// DOM ready. Let's boogie.
+$(document).ready(function() {
+	
+	// Hide the store.
+	$('#store').hide();
+	
+	// apply page template.
+	jqw.applyPageTemplate('DefaultTheme');
+	
+	// display default entries.
+	jqw.displayListedEntries('DefaultEntries');
+	
+	// execute any script entries.
+	jqw.execute({tag: 'script'});
+	
+	jqw.addEventHandlers();
+	
+});
+
+
+
+
+// Apply a template to build the UI.
+jqw.applyPageTemplate = function(name) {
+	
+	/*
+		TODO find the pieces of the template. (CSS, PageTemplate, ViewTemplate, EditTemplate...)
+	*/
+	
+	var id = jqw.entryID(name);
+	var template = $('#'+ id).find('div.entry-content pre').html();
+	$('#wiki').empty().append($(template));
+
+};
+
+
+// Apply a template to build the UI.
+jqw.applyTemplate = function(name) {
+
+
+};
+
+
+// Displauy the entries listed in a given entry.
+jqw.displayListedEntries = function(name) {
+	var content = $('#'+jqw.entryID(name)).find('div.entry-content');
+	jqw.findEntryLinks(content).each(function(index) {
+		jqw.displayEntry($(this).text(), {position:'bottom'});
+	});;
+};
+
+
+// Find the Entry links in an element or string.
+jqw.findEntryLinks = function(source) {
+	return $(source).find('a.entryLink');
+};
+
+
+// Display an entry in the main content area.
+jqw.displayEntry = function(name, options) {
+	
+	var defaults = {
+		template: 'ViewTemplate',
+		position: 'top'
+	};
+	var opt = $.extend({}, defaults, options);
+	
+	//get the template.
+	var template = $($('#'+jqw.entryID(opt.template)).find('div.entry-content pre').clone().html());
+		
+	// get the source data.
+	var source = $('#'+jqw.entryID(name));
+	var content = source.find(jqw.api.content).html();
+	var title = source.find(jqw.api.title).html();
+	var meta = source.find(jqw.api.meta).html();
+	var tags = source.find(jqw.api.tags).html();
+		
+	//substitue the data from the entry.
+	template.find(jqw.api.content).html(content);
+	template.find(jqw.api.title).html(title);
+	template.find(jqw.api.meta).html(meta);
+	template.find(jqw.api.tags).html(tags);
+		
+	//add the result to the display.
+	$('#content').append(template);
+};
+
+
+// Execute a script entry (or a collection by tag)
+jqw.execute = function(args) {
+	
+	// gather the scripts
+	var scripts = [];
+	if(typeof args == 'object') {
+		$('div.'+ args.tag).each(function(index) {
+			var entry = $(this);
+			scripts.push( entry.find('pre').html());
+		});
+	} else if (typeof args == 'string') {
+		scripts.push( $('#'+jqw.entryID(args)).find('pre').html() );
+	}
+	
+	// execute them
+	for (var s=0; s < scripts.length; s++) {
+		try {
+			(new Function( scripts[s] ))();
+		} catch(e){
+			console.log(e.message);
+		}
+	};
+
+};
+
+
+// generate an entry ID
+jqw.entryID = function(name) {
+	return "entry_" + name.replace(" ","_");
+};
+
+
+// generate entry natural name
+jqw.entryName = function(id) {
+	return id.substr(6).replace("_"," ");
+};
+
+
+
+// entry API.
+jqw.api = {
+	entry: 'div.hentry',
+	title: 'h2.entry-title',
+	content : 'div.entry-content',
+	meta : 'dl.meta',
+	tags: 'ul.tags'
+};
+
+
+
+
+
+
+jqw.addEventHandlers = function() {
+
+	$('#controls a').click(function(ev){
+		var btn = $(ev.target);
+		
+		/*
+			TODO handle the commands.
+		*/
+		
+		return false;
+	});
+	
+};
+
+
+		
+	</script>
 </body>
 </html>

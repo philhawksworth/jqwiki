@@ -1,0 +1,5 @@
+template: jqwiki_template.html
+recipe: css/css.recipe
+recipe: js/javascript.recipe
+recipe: system/system.recipe
+recipe: entries/entries.recipe

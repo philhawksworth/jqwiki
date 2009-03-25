@@ -9,7 +9,7 @@ $(document).ready(function() {
 	$('#store').hide();
 	
 	// apply page template.
-	jqw.applyPageTemplate('Default Theme');
+	jqw.applyPageTemplate('DefaultTheme');
 	
 	// display default entries.
 	jqw.displayListedEntries('DefaultEntries');
@@ -22,19 +22,6 @@ $(document).ready(function() {
 });
 
 
-jqw.addEventHandlers = function() {
-
-	$('#controls a').click(function(ev){
-		var btn = $(ev.target);
-		
-		/*
-			TODO handle the commands.
-		*/
-		
-		return false;
-	});
-	
-};
 
 
 // Apply a template to build the UI.
