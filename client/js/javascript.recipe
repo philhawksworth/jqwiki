@@ -1,2 +1,3 @@
 js: init.js
 js: events.js
+js: macros.js

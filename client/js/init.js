@@ -34,7 +34,7 @@ jqw.applyPageTemplate = function(name) {
 	var id = jqw.entryID(name);
 	var template = $('#'+ id).find('div.entry-content pre').html();
 	$('#wiki').empty().append($(template));
-
+	
 };
 
 
@@ -71,21 +71,21 @@ jqw.displayEntry = function(name, options) {
 	
 	//get the template.
 	var template = $($('#'+jqw.entryID(opt.template)).find('div.entry-content pre').clone().html());
-		
-	// get the source data.
-	var source = $('#'+jqw.entryID(name));
-	var content = source.find(jqw.api.content).html();
-	var title = source.find(jqw.api.title).html();
-	var meta = source.find(jqw.api.meta).html();
-	var tags = source.find(jqw.api.tags).html();
-		
-	//substitue the data from the entry.
-	template.find(jqw.api.content).html(content);
-	template.find(jqw.api.title).html(title);
-	template.find(jqw.api.meta).html(meta);
-	template.find(jqw.api.tags).html(tags);
-		
-	//add the result to the display.
+	
+	// find macros in the template and execute them.
+	var data;
+	template.contents().each(function(index) {
+		data = $(this).metadata();
+		data['source'] = $('#'+jqw.entryID(name));
+		data['place'] = this;
+		if($(this).metadata() && data.macro) {
+			if(jqw.macros[data.macro]) {
+				jqw.macros[data.macro](data);
+			} else {
+				console.log('Error: No macro called ', data.macro);
+			}
+		}
+	});	
 	$('#content').append(template);
 };
 
