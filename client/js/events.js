@@ -11,4 +11,12 @@ jqw.addEventHandlers = function() {
 		return false;
 	});
 	
+	
+	$('#content').dblclick(function(ev) {	
+		var $target = $(ev.target);
+		if($target.is('div.hentry')) {
+			jqw.displayEntry($target.find(jqw.api.title).text(), {position:'replace', template:'EditTemplate'});
+		}
+	});
+	
 };

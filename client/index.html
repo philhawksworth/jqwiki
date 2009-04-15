@@ -89,6 +89,16 @@ div.hentry {
 		letter-spacing:-1px;
 		line-height:1.1em;
 		margin-bottom:8px;
+		display:block;
+	}
+	div.edit input.entry-title {
+		background-color:#FEFFF3;
+		border:solid 1px #ddd;
+		border-top:solid 1px #888;
+		padding:4px;
+		font-family:Georgia;
+		font-weight:bold;
+		letter-spacing:-1px;
 	}
 
 	div.hentry dl.meta {
@@ -108,6 +118,17 @@ div.hentry {
 	
 	div.hentry .entry-content {
 		text-align:justify;
+		margin:1em 0;
+	}
+	div.edit textarea.entry-content {
+		display:block;
+		width:100%;
+		height:10em;
+		background-color:#FEFFF3;
+		border:solid 1px #ddd;
+		border-top:solid 1px #888;
+		padding-left:6px;
+		font:normal 12px/1.6 Georgia;
 	}
 	
 	ul.tags {
@@ -136,6 +157,10 @@ div.hentry {
 				color:#fff;
 				border-left:solid 5px #036;
 			}
+
+div.edit {
+}
+
 
 
 #footer {
@@ -208,7 +233,7 @@ pre.code {
 	<div class='entry-content'>
 		<p><a class='entryLink' href='#entry_jQwiki'>jQwiki</a> is an experiment initiated by <a class='entryLink' href='#entry_PhilHawksworth'>PhilHawksworth</a> originally based on <a href="http://TiddlyWiki.com/">TiddlyWiki</a>, the popular single page javascript wiki originally created by Jeremy Ruston and developed by <a href="http://osmosoft.com/">Osmosoft</a> and the TiddlyWiki community.</p>
 		<p><a class='entryLink' href='#entry_jQwiki'>jQwiki</a> is built using <a href="http_//jquery.com">jQuery</a> and is intended to demonstrate an unobtrusive use of Javascript.  If you disable Javascript in your browser, this page should continue to be visible and navigable, but the more advanced features, will only become available when Javascript is enabled in your browser.</p>
-		<p>Since <a class='entryLink' href='#entry_jQwiki'>jQwiki</a> exposes the html first, web crawlers and screen readers should be able to more easily understand it and find meaning in its contents.</p>		
+		<p>Since <a class='entryLink' href='#entry_jQwiki'>jQwiki</a> exposes the html first, web crawlers and screen readers should be able to more easily understand it and find meaning in its contents.</p>
 		<p>More info is available at <a href="http://jigglywiki.com">http://jigglywiki.com</a></p>
 	</div>
 	<ul class='tags'>
@@ -289,6 +314,29 @@ pre.code {
 				<h2 class="entry-title {macro: 'view', data: 'title'}"></h2>
 				<dl class="meta {macro: 'view', data: 'meta'}"></dl>
 				<div class="entry-content {macro: 'view', data: 'content'}"></div>
+				<ul class="tags {macro: 'view', data: 'tags', elements: 'links'}"></ul>
+			</div>
+
+		</pre>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
+		<li><a href='#entry_template' rel='tag'>template</a></li>
+	</ul>
+</div>
+<div class='hentry system' id='entry_EditTemplate'>
+	<h2 class='entry-title'>EditTemplate</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<pre class='code'>
+			
+			<div class="hentry edit {macro: 'entryid', data: 'title'}">
+				<input type='text' class="entry-title {macro: 'edit', data:'title'}">
+				<dl class="meta {macro: 'view', data: 'meta'}"></dl>
+				<textarea class="entry-content {macro: 'edit', data: 'content'}"></textarea>
 				<ul class="tags {macro: 'view', data: 'tags', elements: 'links'}"></ul>
 			</div>
 
@@ -428,14 +476,14 @@ jqw.displayEntry = function(name, options) {
 	
 	var defaults = {
 		template: 'ViewTemplate',
-		position: 'top'
+		position: 'bottom'
 	};
 	var opt = $.extend({}, defaults, options);
-	
+
 	//get the template.
 	var template = $($('#'+jqw.entryID(opt.template)).find('div.entry-content pre').clone().html());
 	
-	// look for metatdata on the template which describes macros.
+	// find macros in the template and execute them.
 	var data;
 	template.contents().each(function(index) {
 		data = $(this).metadata();
@@ -448,28 +496,17 @@ jqw.displayEntry = function(name, options) {
 				console.log('Error: No macro called ', data.macro);
 			}
 		}
-	});
+	});	
 	
-	$('#content').append(template);
-	
-	/*
-		
-	// get the source data.
-	var source = $('#'+jqw.entryID(name));
-	var content = source.find(jqw.api.content).html();
-	var title = source.find(jqw.api.title).html();
-	var meta = source.find(jqw.api.meta).html();
-	var tags = source.find(jqw.api.tags).html();
-		
-	//substitue the data from the entry.
-	template.find(jqw.api.content).html(content);
-	template.find(jqw.api.title).html(title);
-	template.find(jqw.api.meta).html(meta);
-	template.find(jqw.api.tags).html(tags);
-		
-	//add the result to the display.
-	$('#content').append(template);
-	*/
+	// display the entry in the appropriate place.
+	if(opt.position == 'top') {
+		$('#content').prepend(template);		
+	} else if(opt.position == 'bottom') {
+		$('#content').append(template);
+	} else if(opt.position == 'replace') {
+		var e = jqw.findDisplayedEntry(name);
+		e.replaceWith(template);
+	}
 };
 
 
@@ -496,6 +533,12 @@ jqw.execute = function(args) {
 		}
 	};
 
+};
+
+
+//find an entry in the display by its title.
+jqw.findDisplayedEntry = function(name) {
+	return $('#content').find(jqw.api.title+":contains("+ name +")").parents(jqw.api.entry);
 };
 
 
@@ -538,16 +581,35 @@ jqw.addEventHandlers = function() {
 		return false;
 	});
 	
+	
+	$('#content').dblclick(function(ev) {	
+		var $target = $(ev.target);
+		if($target.is('div.hentry')) {
+			jqw.displayEntry($target.find(jqw.api.title).text(), {position:'replace', template:'EditTemplate'});
+		}
+	});
+	
 };
 
 jqw.macros = {};
 
 // View Macro.
-// Creates the content to insert into the element from where the macro was called.
+// Finds content from the store and appends it into the element from where the macro was called.
 jqw.macros.view = function(args) {
 	var content = args.source.find(jqw.api[args.data]).html();
 	$(args.place).append(content);
 };
+
+// Edit Macro.
+// Finds content from the store and use it to populate the input element from where the macro was called.
+jqw.macros.edit = function(args) {
+	var content = args.source.find(jqw.api[args.data]).html();
+	
+	clean = $.trim(content.replace(/\t/g,""));
+	$(args.place).val(clean);
+};
+
+
 
 		
 	</script>

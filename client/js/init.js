@@ -65,10 +65,10 @@ jqw.displayEntry = function(name, options) {
 	
 	var defaults = {
 		template: 'ViewTemplate',
-		position: 'top'
+		position: 'bottom'
 	};
 	var opt = $.extend({}, defaults, options);
-	
+
 	//get the template.
 	var template = $($('#'+jqw.entryID(opt.template)).find('div.entry-content pre').clone().html());
 	
@@ -86,7 +86,16 @@ jqw.displayEntry = function(name, options) {
 			}
 		}
 	});	
-	$('#content').append(template);
+	
+	// display the entry in the appropriate place.
+	if(opt.position == 'top') {
+		$('#content').prepend(template);		
+	} else if(opt.position == 'bottom') {
+		$('#content').append(template);
+	} else if(opt.position == 'replace') {
+		var e = jqw.findDisplayedEntry(name);
+		e.replaceWith(template);
+	}
 };
 
 
@@ -113,6 +122,12 @@ jqw.execute = function(args) {
 		}
 	};
 
+};
+
+
+//find an entry in the display by its title.
+jqw.findDisplayedEntry = function(name) {
+	return $('#content').find(jqw.api.title+":contains("+ name +")").parents(jqw.api.entry);
 };
 
 
