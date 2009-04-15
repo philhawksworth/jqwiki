@@ -30,18 +30,37 @@ jqw.applyPageTemplate = function(name) {
 	/*
 		TODO find the pieces of the template. (CSS, PageTemplate, ViewTemplate, EditTemplate...)
 	*/
-	
-	var id = jqw.entryID(name);
-	var template = $('#'+ id).find('div.entry-content pre').html();
-	$('#wiki').empty().append($(template));
-	
+
+	var pageTemplate = jqw.applyTemplate(name, name);
+	$('#wiki').empty().append(pageTemplate);
 };
 
 
 // Apply a template to build the UI.
-jqw.applyTemplate = function(name) {
+jqw.applyTemplate = function(name, template) {
+	var templated = $($('#'+jqw.entryID(template)).find('div.entry-content pre').clone().html());	
+	templated =  jqw.expandMacros(templated, name);
+	return templated;
+};
 
 
+// find macros and execute them.
+jqw.expandMacros = function(source, name) {
+	
+	var data;
+	source.contents().each(function(index) {
+		data = $(this).metadata();
+		data['source'] = $('#'+jqw.entryID(name));
+		data['place'] = this;
+		if($(this).metadata() && data.macro) {
+			if(jqw.macros[data.macro]) {
+				jqw.macros[data.macro](data);
+			} else {
+				console.log('Error: No macro called ', data.macro);
+			}
+		}
+	});
+	return source;
 };
 
 
@@ -68,33 +87,16 @@ jqw.displayEntry = function(name, options) {
 		position: 'bottom'
 	};
 	var opt = $.extend({}, defaults, options);
-
-	//get the template.
-	var template = $($('#'+jqw.entryID(opt.template)).find('div.entry-content pre').clone().html());
-	
-	// find macros in the template and execute them.
-	var data;
-	template.contents().each(function(index) {
-		data = $(this).metadata();
-		data['source'] = $('#'+jqw.entryID(name));
-		data['place'] = this;
-		if($(this).metadata() && data.macro) {
-			if(jqw.macros[data.macro]) {
-				jqw.macros[data.macro](data);
-			} else {
-				console.log('Error: No macro called ', data.macro);
-			}
-		}
-	});	
-	
+	var entry = jqw.applyTemplate(name, opt.template);
+		
 	// display the entry in the appropriate place.
 	if(opt.position == 'top') {
-		$('#content').prepend(template);		
+		$('#content').prepend(entry);		
 	} else if(opt.position == 'bottom') {
-		$('#content').append(template);
+		$('#content').append(entry);
 	} else if(opt.position == 'replace') {
 		var e = jqw.findDisplayedEntry(name);
-		e.replaceWith(template);
+		e.replaceWith(entry);
 	}
 };
 

@@ -8,199 +8,40 @@
 	<meta name="generator" content="TextMate http_//macromates.com/">
 	<meta name="author" content="Phil Hawksworth">	
 	<style type="text/css" media="screen">
-html, body, div, h1, h2, h3, h3, dl, dd, dt {
-	padding:0;
-	margin:0;
-}
+html,body,div,h1,h2,h3,h3,dl,dd,dt{padding:0;margin:0;}
+body{font:normal 12px/1.4 Georgia;padding:1em;}
+a:link,a:visited{color:#1E52CD;}
+a:hover,a:focus{color:#DB7E08;}
+div.system{display:none;}
+/* FOUC avoideance. */
+html.js > div{display:none;}
 
-body {
-	font:normal 12px/1.4 Georgia;
-	padding:1em;
-}
-
-a:link, a:visited {
-	color:#1E52CD;
-}
-a:hover, a:focus {
-	color:#DB7E08;
-}
-
-div.system {
-	display:none;
-}
-
-/*  FOUC avoideance. */
-html.js > div {
-	display:none;
-}
-
-html, body {
-	padding:0;
-}
-	
-#header {
-	background-color:#222;
-	color:#fff;
-	padding:10px;
-	text-align:center;
-}
-
-	#header h1,
-	#header h2 {
-		font-weight:normal;
-		line-height:1.2em;
-	}
-
-	#header h2 {
-		font-size:1.1em;
-		color:#bbb;
-	}
-	
-#controls {
-	padding:10px;
-	font-size:0.9em;
-	text-align:right;
-	background-color:#333;
-}
-
-	#controls a:link, #controls a:visited {
-		background-color:#000;
-		color:#fff;
-		padding:3px 9px;
-		margin-right:3px;
-		text-decoration:none;
-		-moz-border-radius:3px;			
-		-webkit-border-radius:3px;
-	}
-	#controls a:hover, #controls a:focus {
-		background-color:#1E52CD;
-		color:#fff;
-	}
-	
-
-div.hentry {
-	border-bottom:solid 1px #ddd;
-	margin:0;
-	padding:30px;
-}
-
-	div.hentry .entry-title {
-		font-size:2.5em;
-		letter-spacing:-1px;
-		line-height:1.1em;
-		margin-bottom:8px;
-		display:block;
-	}
-	div.edit input.entry-title {
-		background-color:#FEFFF3;
-		border:solid 1px #ddd;
-		border-top:solid 1px #888;
-		padding:4px;
-		font-family:Georgia;
-		font-weight:bold;
-		letter-spacing:-1px;
-	}
-
-	div.hentry dl.meta {
-		font-size:0.8em;
-		display:inline;
-	}
-		div.hentry dl.meta dt {
-			color:#444;
-			display:inline;
-			margin-right:0.5em;
-		}
-		div.hentry dl.meta dd {
-			color:#777;
-			display:inline;
-			margin-right:1em;
-		}
-	
-	div.hentry .entry-content {
-		text-align:justify;
-		margin:1em 0;
-	}
-	div.edit textarea.entry-content {
-		display:block;
-		width:100%;
-		height:10em;
-		background-color:#FEFFF3;
-		border:solid 1px #ddd;
-		border-top:solid 1px #888;
-		padding-left:6px;
-		font:normal 12px/1.6 Georgia;
-	}
-	
-	ul.tags {
-		list-style:none;
-		padding:0;
-		margin:0;
-		font-size:0.8em;
-	}
-		ul.tags li {
-			display:inline;
-			margin-right:3px;
-		}
-			ul.tags li a:link, ul.tags li a:visited {
-				background-color:#777;
-				color:#fff;
-				border-left:solid 5px #555;
-				padding:3px 9px 3px 6px;
-				text-decoration:none;
-				-moz-border-radius-topright:3px;			
-				-moz-border-radius-bottomright:3px;
-				-webkit-border-top-right-radius:3px;
-				-webkit-border-bottom-right-radius:3px;
-			}
-			ul.tags li a:hover, ul.tags li a:focus {
-				background-color:#1E52CD;
-				color:#fff;
-				border-left:solid 5px #036;
-			}
-
-div.edit {
-}
-
-
-
-#footer {
-	display:block;
-	padding:20px 30px;
-	text-align:right;
-	font-size:0.9em;
-	font-style:italic;
-	color:#777;
-	border-top:solid 4px #eee;
-}
-
-	#footer p {
-		padding:0;
-		margin:0.2em 0;
-	}
-
-	#footer a:link,	#footer a:visited {
-		color:#777;
-		margin:0 2px;
-		text-decoration:none;
-	}
-	#footer a:hover, #footer a:focus {
-		color:#333;
-		text-decoration:underline;
-	}
-
-	
-pre.code {
-	font-size:1em;
-	font-family:courier;
-	color:#00C7FF;
-	background:#111;
-	border:solid 1px #000;
-	padding:1em;
-	width:80%;
-	height:10em;
-	overflow:auto;
-}
-
+html,body{padding:0;}
+#header{background-color:#222;color:#fff;padding:10px;text-align:center;}
+#header h1,
+#header h2{font-weight:normal;line-height:1.2em;}
+#header h2{font-size:1.1em;color:#bbb;}
+#controls{padding:10px;font-size:0.9em;text-align:right;background-color:#333;}
+#controls a:link,#controls a:visited{background-color:#000;color:#fff;padding:3px 9px;margin-right:3px;text-decoration:none;-moz-border-radius:3px;-webkit-border-radius:3px;}
+#controls a:hover,#controls a:focus{background-color:#1E52CD;color:#fff;}
+div.hentry{border-bottom:solid 1px #ddd;margin:0;padding:30px;}
+div.hentry .entry-title{font-size:2.5em;letter-spacing:-1px;line-height:1.1em;margin-bottom:8px;display:block;}
+div.edit input.entry-title{background-color:#FEFFF3;border:solid 1px #ddd;border-top:solid 1px #888;padding:4px;font-family:Georgia;font-weight:bold;letter-spacing:-1px;}
+div.hentry dl.meta{font-size:0.8em;display:inline;}
+div.hentry dl.meta dt{color:#444;display:inline;margin-right:0.5em;}
+div.hentry dl.meta dd{color:#777;display:inline;margin-right:1em;}
+div.hentry .entry-content{text-align:justify;margin:1em 0;}
+div.edit textarea.entry-content{display:block;width:100%;height:10em;background-color:#FEFFF3;border:solid 1px #ddd;border-top:solid 1px #888;padding-left:6px;font:normal 12px/1.6 Georgia;}
+ul.tags{list-style:none;padding:0;margin:0;font-size:0.8em;}
+ul.tags li{display:inline;margin-right:3px;}
+ul.tags li a:link,ul.tags li a:visited{background-color:#777;color:#fff;border-left:solid 5px #555;padding:3px 9px 3px 6px;text-decoration:none;-moz-border-radius-topright:3px;-moz-border-radius-bottomright:3px;-webkit-border-top-right-radius:3px;-webkit-border-bottom-right-radius:3px;}
+ul.tags li a:hover,ul.tags li a:focus{background-color:#1E52CD;color:#fff;border-left:solid 5px #036;}
+div.edit{}
+#footer{display:block;padding:20px 30px;text-align:right;font-size:0.9em;font-style:italic;color:#777;border-top:solid 4px #eee;}
+#footer p{padding:0;margin:0.2em 0;}
+#footer a:link,#footer a:visited{color:#777;margin:0 2px;text-decoration:none;}
+#footer a:hover,#footer a:focus{color:#333;text-decoration:underline;}
+pre.code{font-size:1em;font-family:courier;color:#00C7FF;background:#111;border:solid 1px #000;padding:1em;width:80%;height:10em;overflow:auto;}
 
 
 	</style>
@@ -234,7 +75,7 @@ pre.code {
 		<p><a class='entryLink' href='#entry_jQwiki'>jQwiki</a> is an experiment initiated by <a class='entryLink' href='#entry_PhilHawksworth'>PhilHawksworth</a> originally based on <a href="http://TiddlyWiki.com/">TiddlyWiki</a>, the popular single page javascript wiki originally created by Jeremy Ruston and developed by <a href="http://osmosoft.com/">Osmosoft</a> and the TiddlyWiki community.</p>
 		<p><a class='entryLink' href='#entry_jQwiki'>jQwiki</a> is built using <a href="http_//jquery.com">jQuery</a> and is intended to demonstrate an unobtrusive use of Javascript.  If you disable Javascript in your browser, this page should continue to be visible and navigable, but the more advanced features, will only become available when Javascript is enabled in your browser.</p>
 		<p>Since <a class='entryLink' href='#entry_jQwiki'>jQwiki</a> exposes the html first, web crawlers and screen readers should be able to more easily understand it and find meaning in its contents.</p>
-		<p>More info is available at <a href="http://jigglywiki.com">http://jigglywiki.com</a></p>
+		<p>More info is available at <a href="http://jqwiki.com">http://jqwiki.com</a></p>
 	</div>
 	<ul class='tags'>
 		<li><a href='#entry_jQwiki' rel='tag'>jQwiki</a></li>
@@ -283,8 +124,8 @@ pre.code {
 		<pre class='code'>
 			
 			<div id='header'>
-				<h1 id='title'>jQwiki</h1>
-				<h2 id='subtitle'>A self contained wiki made with Javascript, HTML and a sprinkling of jQuery goodness. </h2>			
+				<h1 id='title' class="{macro: 'entry', entry: 'SiteTitle'}"></h1>
+				<h2 id='subtitle' class="{macro: 'entry', entry: 'SiteSubtitle'}"></h2>			
 			</div>
 			<div id='controls'><a href='#' title='Create a new entry' class='newEntry'>New entry</a><a href='#' title='Save the wiki' class='save'>Save</a><a href='#' title='Save a copy to your hardrive' class='download'>Save a copy</a></div>
 			<div id='content'></div>
@@ -310,7 +151,7 @@ pre.code {
 	<div class='entry-content'>
 		<pre class='code'>
 			
-			<div class="hentry {macro: 'entryid', data: 'title'}">
+			<div class="hentry">
 				<h2 class="entry-title {macro: 'view', data: 'title'}"></h2>
 				<dl class="meta {macro: 'view', data: 'meta'}"></dl>
 				<div class="entry-content {macro: 'view', data: 'content'}"></div>
@@ -333,11 +174,11 @@ pre.code {
 	<div class='entry-content'>
 		<pre class='code'>
 			
-			<div class="hentry edit {macro: 'entryid', data: 'title'}">
+			<div class="hentry edit">
 				<input type='text' class="entry-title {macro: 'edit', data:'title'}">
 				<dl class="meta {macro: 'view', data: 'meta'}"></dl>
 				<textarea class="entry-content {macro: 'edit', data: 'content'}"></textarea>
-				<ul class="tags {macro: 'view', data: 'tags', elements: 'links'}"></ul>
+				<ul class="tags {macro: 'view', data: 'tags'}"></ul>
 			</div>
 
 		</pre>
@@ -360,6 +201,36 @@ pre.code {
 	<ul class='tags'>
 		<li><a href='#entry_system' rel='tag'>system</a></li>
 		<li><a href='#entry_template' rel='tag'>template</a></li>
+	</ul>
+</div>
+
+
+<div class='hentry system' id='entry_SiteTitle'>
+	<h2 class='entry-title'>SiteTitle</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		jQwiki
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
+	</ul>
+</div>
+
+
+<div class='hentry system' id='entry_SiteSubtitle'>
+	<h2 class='entry-title'>SiteSubtitle</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		A self contained wiki made with Javascript, HTML and a sprinkling of jQuery goodness.
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
 	</ul>
 </div>
 
@@ -441,18 +312,37 @@ jqw.applyPageTemplate = function(name) {
 	/*
 		TODO find the pieces of the template. (CSS, PageTemplate, ViewTemplate, EditTemplate...)
 	*/
-	
-	var id = jqw.entryID(name);
-	var template = $('#'+ id).find('div.entry-content pre').html();
-	$('#wiki').empty().append($(template));
-	
+
+	var pageTemplate = jqw.applyTemplate(name, name);
+	$('#wiki').empty().append(pageTemplate);
 };
 
 
 // Apply a template to build the UI.
-jqw.applyTemplate = function(name) {
+jqw.applyTemplate = function(name, template) {
+	var templated = $($('#'+jqw.entryID(template)).find('div.entry-content pre').clone().html());	
+	templated =  jqw.expandMacros(templated, name);
+	return templated;
+};
 
 
+// find macros and execute them.
+jqw.expandMacros = function(source, name) {
+	
+	var data;
+	source.contents().each(function(index) {
+		data = $(this).metadata();
+		data['source'] = $('#'+jqw.entryID(name));
+		data['place'] = this;
+		if($(this).metadata() && data.macro) {
+			if(jqw.macros[data.macro]) {
+				jqw.macros[data.macro](data);
+			} else {
+				console.log('Error: No macro called ', data.macro);
+			}
+		}
+	});
+	return source;
 };
 
 
@@ -479,33 +369,16 @@ jqw.displayEntry = function(name, options) {
 		position: 'bottom'
 	};
 	var opt = $.extend({}, defaults, options);
-
-	//get the template.
-	var template = $($('#'+jqw.entryID(opt.template)).find('div.entry-content pre').clone().html());
-	
-	// find macros in the template and execute them.
-	var data;
-	template.contents().each(function(index) {
-		data = $(this).metadata();
-		data['source'] = $('#'+jqw.entryID(name));
-		data['place'] = this;
-		if($(this).metadata() && data.macro) {
-			if(jqw.macros[data.macro]) {
-				jqw.macros[data.macro](data);
-			} else {
-				console.log('Error: No macro called ', data.macro);
-			}
-		}
-	});	
-	
+	var entry = jqw.applyTemplate(name, opt.template);
+		
 	// display the entry in the appropriate place.
 	if(opt.position == 'top') {
-		$('#content').prepend(template);		
+		$('#content').prepend(entry);		
 	} else if(opt.position == 'bottom') {
-		$('#content').append(template);
+		$('#content').append(entry);
 	} else if(opt.position == 'replace') {
 		var e = jqw.findDisplayedEntry(name);
-		e.replaceWith(template);
+		e.replaceWith(entry);
 	}
 };
 
@@ -604,10 +477,22 @@ jqw.macros.view = function(args) {
 // Finds content from the store and use it to populate the input element from where the macro was called.
 jqw.macros.edit = function(args) {
 	var content = args.source.find(jqw.api[args.data]).html();
-	
-	clean = $.trim(content.replace(/\t/g,""));
-	$(args.place).val(clean);
+	$(args.place).val($.trim(content.replace(/\t/g,"")));
 };
+
+// Entry Macro.
+// Transcludes the content of an entry into the element from where the macro was called.
+jqw.macros.entry = function(args) {
+	console.log('Entry: ', args);
+	
+	var source = $('#'+jqw.entryID(args.entry));
+	
+	var content = source.find(jqw.api.content).html();
+	$(args.place).append(content);
+};
+
+
+
 
 
 

@@ -2,3 +2,5 @@ system: DefaultTheme.html
 system: ViewTemplate.html
 system: EditTemplate.html
 system: DefaultEntries.html
+system: SiteTitle.html
+system: SiteSubtitle.html

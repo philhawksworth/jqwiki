@@ -11,8 +11,20 @@ jqw.macros.view = function(args) {
 // Finds content from the store and use it to populate the input element from where the macro was called.
 jqw.macros.edit = function(args) {
 	var content = args.source.find(jqw.api[args.data]).html();
-	
-	clean = $.trim(content.replace(/\t/g,""));
-	$(args.place).val(clean);
+	$(args.place).val($.trim(content.replace(/\t/g,"")));
 };
+
+// Entry Macro.
+// Transcludes the content of an entry into the element from where the macro was called.
+jqw.macros.entry = function(args) {
+	console.log('Entry: ', args);
+	
+	var source = $('#'+jqw.entryID(args.entry));
+	
+	var content = source.find(jqw.api.content).html();
+	$(args.place).append(content);
+};
+
+
+
 
