@@ -39,4 +39,5 @@ jqw.addEventHandlers = function() {
 		}
 	});
 	
+	$(document).trigger('addEventHandlers.jqwiki');	
 };

@@ -2,7 +2,7 @@ html,body {
 	padding: 0;
 }
 #header {
-	background-color: #222;
+	background-color: #000;
 	color: #fff;
 	padding: 10px;
 	text-align: center;
@@ -12,18 +12,21 @@ html,body {
 	font-weight: normal;
 	line-height: 1.2em;
 }
+#header h1 {
+	letter-spacing:-1px;	
+}
 #header h2 {
 	font-size: 1.1em;
-	color: #bbb;
+	color: #666;
 }
 #controls {
 	padding: 10px;
 	font-size: 0.9em;
 	text-align: right;
-	background-color: #333;
+	background-color: #191919;
 }
 #controls a:link,#controls a:visited {
-	background-color: #000;
+	background-color:#000;
 	color: #fff;
 	padding: 3px 9px;
 	margin-right: 3px;
@@ -33,7 +36,6 @@ html,body {
 }
 #controls a:hover,#controls a:focus {
 	background-color: #1E52CD;
-	color: #fff;
 }
 div.hentry {
 	border-bottom: solid 1px #ddd;
@@ -72,7 +74,7 @@ div.hentry dl.meta dd {
 }
 div.hentry .entry-content {
 	text-align: justify;
-	margin: 1em 0;
+	margin: 1em 0 2em 0;
 }
 div.edit textarea.entry-content {
 	display: block;
@@ -86,29 +88,32 @@ div.edit textarea.entry-content {
 }
 ul.tags {
 	list-style: none;
-	padding: 0;
+	padding: 4px 8px;
 	margin: 0;
 	font-size: 0.8em;
+	border-top:solid 1px #bbb;
+	display:inline;
 }
 ul.tags li {
 	display: inline;
 	margin-right: 3px;
+	overflow:auto;
 }
 ul.tags li a:link,ul.tags li a:visited {
-	background-color: #777;
-	color: #fff;
-	border-left: solid 5px #555;
-	padding: 3px 9px 3px 6px;
+	background-color: #ddd;
+	color: #333;
+	border-top: solid 2px #ccc;
+	padding: 2px 8px 4px 8px;
 	text-decoration: none;
-	-moz-border-radius-topright: 3px;
 	-moz-border-radius-bottomright: 3px;
-	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-bottomleft: 3px;
 	-webkit-border-bottom-right-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
 }
 ul.tags li a:hover,ul.tags li a:focus {
 	background-color: #1E52CD;
 	color: #fff;
-	border-left: solid 5px #036;
+	border-top: solid 2px #1A48B4;
 }
 
 div.hentry div.controls {
@@ -132,8 +137,11 @@ div.hentry div.controls a:hover, div.hentry div.control a:focus {
 	color:#fff;
 }
 
-div.edit {
+div.edit div.controls a {
+	background-color: #333;
+	color: #fff;
 }
+
 #footer {
 	display: block;
 	padding: 20px 30px;

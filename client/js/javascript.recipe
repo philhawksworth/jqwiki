@@ -1,5 +1,6 @@
+js: instrumentation.js
 js: init.js
 js: events.js
 js: controls.js
 js: macros.js
-js: instrumentation.js
+

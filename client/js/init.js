@@ -4,22 +4,32 @@ var jqw = {};
 
 // DOM ready. Let's boogie.
 $(document).ready(function() {
+	jqw.init();
+});
+
+
+// Start the jqwiki-ness
+jqw.init = function() {
+	
+	$(document).trigger('init.jqwiki');
 	
 	// Hide the store.
 	$('#store').hide();
-	
+	$(document).trigger('hideStore.jqwiki');
+		
 	// apply page template.
 	jqw.applyPageTemplate('DefaultTheme');
 	
 	// display default entries.
 	jqw.displayListedEntries('DefaultEntries');
+	$(document).trigger('displayDefaultEntries.jqwiki');
 	
 	// execute any script entries.
 	jqw.execute({tag: 'script'});
 	
+	// Add our event handlers.
 	jqw.addEventHandlers();
-	
-});
+};
 
 
 
@@ -33,6 +43,8 @@ jqw.applyPageTemplate = function(name) {
 
 	var pageTemplate = jqw.applyTemplate(name, name);
 	$('#wiki').empty().append(pageTemplate);
+	
+	$(document).trigger('applyPageTemplate.jqwiki');
 };
 
 
@@ -69,7 +81,7 @@ jqw.displayListedEntries = function(name) {
 	var content = $('#'+jqw.entryID(name)).find('div.entry-content');
 	jqw.findEntryLinks(content).each(function(index) {
 		jqw.displayEntry($(this).text(), {position:'bottom'});
-	});;
+	});
 };
 
 
