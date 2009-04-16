@@ -226,7 +226,7 @@ pre.code {
 		<p><a class='entryLink' href='#entry_jQwiki'>jQwiki</a> is an experiment initiated by <a class='entryLink' href='#entry_PhilHawksworth'>PhilHawksworth</a> originally based on <a href="http://TiddlyWiki.com/">TiddlyWiki</a>, the popular single page javascript wiki originally created by Jeremy Ruston and developed by <a href="http://osmosoft.com/">Osmosoft</a> and the TiddlyWiki community.</p>
 		<p><a class='entryLink' href='#entry_jQwiki'>jQwiki</a> is built using <a href="http_//jquery.com">jQuery</a> and is intended to demonstrate an unobtrusive use of Javascript.  If you disable Javascript in your browser, this page should continue to be visible and navigable, but the more advanced features, will only become available when Javascript is enabled in your browser.</p>
 		<p>Since <a class='entryLink' href='#entry_jQwiki'>jQwiki</a> exposes the html first, web crawlers and screen readers should be able to more easily understand it and find meaning in its contents.</p>
-		<p>More info is available at <a href="http://jqwiki.com">http://jqwiki.com</a></p>
+		<p>More info is available at <a href="http://jqwiki.com">http://jqwiki.com</a> and in the <a class='entryLink' href='#entry_ReleaseNotes'>ReleaseNotes</a></p>
 	</div>
 	<ul class='tags'>
 		<li><a href='#entry_jQwiki' rel='tag'>jQwiki</a></li>
@@ -259,6 +259,33 @@ pre.code {
 	</div>
 	<ul class='tags'>
 		<li><a href='#entry_Script' rel='tag'>Script</a></li>
+	</ul>
+</div>
+<div class='hentry' id='entry_ReleaseNotes'>
+	<h2 class='entry-title'>ReleaseNotes</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<h3>version 0.0.2</h3>
+		<ul>
+			<li>Added page templating</li>
+			<li>Added entry templating</li>
+			<li>Added simple macro engine</li>
+			<li>Events now fired for key stages of startup process</li>
+			<li>Events now fired for editing and closing entries</li>
+		</ul>
+		<h3>version 0.0.1</h3>
+		<ul>
+			<li>Content exposed whithout javascript.</li>
+			<li>Javascript adds commands to (global and per entry.)</li>
+			<li>Default entries are displayed when Javascript is available</li>
+			<li>Script entries are executed at application startup</li>
+			<li>Entry queries defined via api.</li>
+		</ul>
+	</div>
+	<ul class='tags'>
 	</ul>
 </div>
 
@@ -541,7 +568,6 @@ jqw.applyPageTemplate = function(name) {
 
 	var pageTemplate = jqw.applyTemplate(name, name);
 	$('#wiki').empty().append(pageTemplate);
-	
 	$(document).trigger('applyPageTemplate.jqwiki');
 };
 
@@ -594,9 +620,17 @@ jqw.displayEntry = function(name, options) {
 	
 	var defaults = {
 		template: 'ViewTemplate',
-		position: 'bottom'
+		position: 'bottom',
+		sourceEntry: null,
+		sourceElement: null
 	};
 	var opt = $.extend({}, defaults, options);
+	
+	// don't open an entry more than once.
+	if(jqw.findDisplayedEntry(name).length > 0 && opt.position != 'replace') {
+		return;
+	}
+	
 	var entry = jqw.applyTemplate(name, opt.template);
 	
 	//add an id to the entry so that we can rapidly find it in the display.
@@ -610,6 +644,8 @@ jqw.displayEntry = function(name, options) {
 	} else if(opt.position == 'replace') {
 		var e = jqw.findDisplayedEntry(name);
 		e.replaceWith(entry);
+	} else if(opt.position == 'after') {
+		opt.sourceEntry.after(entry);
 	}
 };
 
@@ -654,7 +690,7 @@ jqw.entryID = function(name) {
 
 // generate entry natural name
 jqw.entryName = function(id) {
-	return id.substr(6).replace("_"," ");
+	return id.substr(7).replace("_"," ");
 };
 
 
@@ -688,10 +724,18 @@ jqw.addEventHandlers = function() {
 	
 	$('#content').click(function(ev) {
 		var $target = $(ev.target);
+		var entry = $target.parents(jqw.api.entry);	
+		
+		// entry links
+		if($target.is('a.entryLink')) {
+			$target.trigger('entryLinkClick.jqwiki');
+			var name = jqw.entryName($target.attr('href'));
+			jqw.displayEntry(name, {position: 'after', sourceEntry: entry, sourceElement: $target});	
+		}
 		
 		// entry control buttons
 		if($target.is('div.hentry div.controls a')) {
-			var entry = $target.parents(jqw.api.entry);
+
 			var name = entry.attr('id');
 			
 			// edit button

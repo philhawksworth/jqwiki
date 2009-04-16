@@ -43,7 +43,6 @@ jqw.applyPageTemplate = function(name) {
 
 	var pageTemplate = jqw.applyTemplate(name, name);
 	$('#wiki').empty().append(pageTemplate);
-	
 	$(document).trigger('applyPageTemplate.jqwiki');
 };
 
@@ -96,9 +95,17 @@ jqw.displayEntry = function(name, options) {
 	
 	var defaults = {
 		template: 'ViewTemplate',
-		position: 'bottom'
+		position: 'bottom',
+		sourceEntry: null,
+		sourceElement: null
 	};
 	var opt = $.extend({}, defaults, options);
+	
+	// don't open an entry more than once.
+	if(jqw.findDisplayedEntry(name).length > 0 && opt.position != 'replace') {
+		return;
+	}
+	
 	var entry = jqw.applyTemplate(name, opt.template);
 	
 	//add an id to the entry so that we can rapidly find it in the display.
@@ -112,6 +119,8 @@ jqw.displayEntry = function(name, options) {
 	} else if(opt.position == 'replace') {
 		var e = jqw.findDisplayedEntry(name);
 		e.replaceWith(entry);
+	} else if(opt.position == 'after') {
+		opt.sourceEntry.after(entry);
 	}
 };
 
@@ -156,7 +165,7 @@ jqw.entryID = function(name) {
 
 // generate entry natural name
 jqw.entryName = function(id) {
-	return id.substr(6).replace("_"," ");
+	return id.substr(7).replace("_"," ");
 };
 
 

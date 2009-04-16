@@ -14,10 +14,18 @@ jqw.addEventHandlers = function() {
 	
 	$('#content').click(function(ev) {
 		var $target = $(ev.target);
+		var entry = $target.parents(jqw.api.entry);	
+		
+		// entry links
+		if($target.is('a.entryLink')) {
+			$target.trigger('entryLinkClick.jqwiki');
+			var name = jqw.entryName($target.attr('href'));
+			jqw.displayEntry(name, {position: 'after', sourceEntry: entry, sourceElement: $target});	
+		}
 		
 		// entry control buttons
 		if($target.is('div.hentry div.controls a')) {
-			var entry = $target.parents(jqw.api.entry);
+
 			var name = entry.attr('id');
 			
 			// edit button
