@@ -64,7 +64,7 @@ jqw.expandMacros = function(source, name) {
 };
 
 
-// Displauy the entries listed in a given entry.
+// Display the entries listed in a given entry.
 jqw.displayListedEntries = function(name) {
 	var content = $('#'+jqw.entryID(name)).find('div.entry-content');
 	jqw.findEntryLinks(content).each(function(index) {
@@ -88,6 +88,9 @@ jqw.displayEntry = function(name, options) {
 	};
 	var opt = $.extend({}, defaults, options);
 	var entry = jqw.applyTemplate(name, opt.template);
+	
+	//add an id to the entry so that we can rapidly find it in the display.
+	entry.attr({id: name});
 		
 	// display the entry in the appropriate place.
 	if(opt.position == 'top') {
@@ -129,7 +132,7 @@ jqw.execute = function(args) {
 
 //find an entry in the display by its title.
 jqw.findDisplayedEntry = function(name) {
-	return $('#content').find(jqw.api.title+":contains("+ name +")").parents(jqw.api.entry);
+	return $('#' + name);
 };
 
 
@@ -149,7 +152,7 @@ jqw.entryName = function(id) {
 // entry API.
 jqw.api = {
 	entry: 'div.hentry',
-	title: 'h2.entry-title',
+	title: '.entry-title',
 	content : 'div.entry-content',
 	meta : 'dl.meta',
 	tags: 'ul.tags'

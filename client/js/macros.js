@@ -17,11 +17,7 @@ jqw.macros.edit = function(args) {
 // Entry Macro.
 // Transcludes the content of an entry into the element from where the macro was called.
 jqw.macros.entry = function(args) {
-	console.log('Entry: ', args);
-	
-	var source = $('#'+jqw.entryID(args.entry));
-	
-	var content = source.find(jqw.api.content).html();
+	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
 	$(args.place).append(content);
 };
 

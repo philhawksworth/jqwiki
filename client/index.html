@@ -16,32 +16,175 @@ div.system{display:none;}
 /* FOUC avoideance. */
 html.js > div{display:none;}
 
-html,body{padding:0;}
-#header{background-color:#222;color:#fff;padding:10px;text-align:center;}
+html,body {
+	padding: 0;
+}
+#header {
+	background-color: #222;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+}
 #header h1,
-#header h2{font-weight:normal;line-height:1.2em;}
-#header h2{font-size:1.1em;color:#bbb;}
-#controls{padding:10px;font-size:0.9em;text-align:right;background-color:#333;}
-#controls a:link,#controls a:visited{background-color:#000;color:#fff;padding:3px 9px;margin-right:3px;text-decoration:none;-moz-border-radius:3px;-webkit-border-radius:3px;}
-#controls a:hover,#controls a:focus{background-color:#1E52CD;color:#fff;}
-div.hentry{border-bottom:solid 1px #ddd;margin:0;padding:30px;}
-div.hentry .entry-title{font-size:2.5em;letter-spacing:-1px;line-height:1.1em;margin-bottom:8px;display:block;}
-div.edit input.entry-title{background-color:#FEFFF3;border:solid 1px #ddd;border-top:solid 1px #888;padding:4px;font-family:Georgia;font-weight:bold;letter-spacing:-1px;}
-div.hentry dl.meta{font-size:0.8em;display:inline;}
-div.hentry dl.meta dt{color:#444;display:inline;margin-right:0.5em;}
-div.hentry dl.meta dd{color:#777;display:inline;margin-right:1em;}
-div.hentry .entry-content{text-align:justify;margin:1em 0;}
-div.edit textarea.entry-content{display:block;width:100%;height:10em;background-color:#FEFFF3;border:solid 1px #ddd;border-top:solid 1px #888;padding-left:6px;font:normal 12px/1.6 Georgia;}
-ul.tags{list-style:none;padding:0;margin:0;font-size:0.8em;}
-ul.tags li{display:inline;margin-right:3px;}
-ul.tags li a:link,ul.tags li a:visited{background-color:#777;color:#fff;border-left:solid 5px #555;padding:3px 9px 3px 6px;text-decoration:none;-moz-border-radius-topright:3px;-moz-border-radius-bottomright:3px;-webkit-border-top-right-radius:3px;-webkit-border-bottom-right-radius:3px;}
-ul.tags li a:hover,ul.tags li a:focus{background-color:#1E52CD;color:#fff;border-left:solid 5px #036;}
-div.edit{}
-#footer{display:block;padding:20px 30px;text-align:right;font-size:0.9em;font-style:italic;color:#777;border-top:solid 4px #eee;}
-#footer p{padding:0;margin:0.2em 0;}
-#footer a:link,#footer a:visited{color:#777;margin:0 2px;text-decoration:none;}
-#footer a:hover,#footer a:focus{color:#333;text-decoration:underline;}
-pre.code{font-size:1em;font-family:courier;color:#00C7FF;background:#111;border:solid 1px #000;padding:1em;width:80%;height:10em;overflow:auto;}
+#header h2 {
+	font-weight: normal;
+	line-height: 1.2em;
+}
+#header h2 {
+	font-size: 1.1em;
+	color: #bbb;
+}
+#controls {
+	padding: 10px;
+	font-size: 0.9em;
+	text-align: right;
+	background-color: #333;
+}
+#controls a:link,#controls a:visited {
+	background-color: #000;
+	color: #fff;
+	padding: 3px 9px;
+	margin-right: 3px;
+	text-decoration: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+#controls a:hover,#controls a:focus {
+	background-color: #1E52CD;
+	color: #fff;
+}
+div.hentry {
+	border-bottom: solid 1px #ddd;
+	margin: 0;
+	padding: 30px;
+}
+div.hentry .entry-title {
+	font-size: 2.5em;
+	letter-spacing: -1px;
+	line-height: 1.1em;
+	margin-bottom: 8px;
+	display: block;
+}
+div.edit input.entry-title {
+	background-color: #FEFFF3;
+	border: solid 1px #ddd;
+	border-top: solid 1px #888;
+	padding: 4px;
+	font-family: Georgia;
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+div.hentry dl.meta {
+	font-size: 0.8em;
+	display: inline;
+}
+div.hentry dl.meta dt {
+	color: #444;
+	display: inline;
+	margin-right: 0.5em;
+}
+div.hentry dl.meta dd {
+	color: #777;
+	display: inline;
+	margin-right: 1em;
+}
+div.hentry .entry-content {
+	text-align: justify;
+	margin: 1em 0;
+}
+div.edit textarea.entry-content {
+	display: block;
+	width: 100%;
+	height: 10em;
+	background-color: #FEFFF3;
+	border: solid 1px #ddd;
+	border-top: solid 1px #888;
+	padding-left: 6px;
+	font: normal 12px/1.6 Georgia;
+}
+ul.tags {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	font-size: 0.8em;
+}
+ul.tags li {
+	display: inline;
+	margin-right: 3px;
+}
+ul.tags li a:link,ul.tags li a:visited {
+	background-color: #777;
+	color: #fff;
+	border-left: solid 5px #555;
+	padding: 3px 9px 3px 6px;
+	text-decoration: none;
+	-moz-border-radius-topright: 3px;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+}
+ul.tags li a:hover,ul.tags li a:focus {
+	background-color: #1E52CD;
+	color: #fff;
+	border-left: solid 5px #036;
+}
+
+div.hentry div.controls {
+	display:inline;
+}
+
+div.hentry div.controls a {
+	font-size: 0.8em;
+	background-color: #ddd;
+	color: #333;
+	padding: 3px 9px;
+	margin-right: 3px;
+	text-decoration: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+
+div.hentry div.controls a:hover, div.hentry div.control a:focus {
+	background-color:#1E52CD;
+	color:#fff;
+}
+
+div.edit {
+}
+#footer {
+	display: block;
+	padding: 20px 30px;
+	text-align: right;
+	font-size: 0.9em;
+	font-style: italic;
+	color: #777;
+	border-top: solid 4px #eee;
+}
+#footer p {
+	padding: 0;
+	margin: 0.2em 0;
+}
+#footer a:link,#footer a:visited {
+	color: #777;
+	margin: 0 2px;
+	text-decoration: none;
+}
+#footer a:hover,#footer a:focus {
+	color: #333;
+	text-decoration: underline;
+}
+pre.code {
+	font-size: 1em;
+	font-family: courier;
+	color: #00C7FF;
+	background: #111;
+	border: solid 1px #000;
+	padding: 1em;
+	width: 80%;
+	height: 10em;
+	overflow: auto;
+}
 
 
 	</style>
@@ -107,7 +250,7 @@ pre.code{font-size:1em;font-family:courier;color:#00C7FF;background:#111;border:
 		</pre>
 	</div>
 	<ul class='tags'>
-		<li><a href='#entry_People' rel='tag'>People</a></li>
+		<li><a href='#entry_Script' rel='tag'>Script</a></li>
 	</ul>
 </div>
 
@@ -130,7 +273,7 @@ pre.code{font-size:1em;font-family:courier;color:#00C7FF;background:#111;border:
 			<div id='controls'><a href='#' title='Create a new entry' class='newEntry'>New entry</a><a href='#' title='Save the wiki' class='save'>Save</a><a href='#' title='Save a copy to your hardrive' class='download'>Save a copy</a></div>
 			<div id='content'></div>
 			<div id='footer'>
-				<p>jQwiki version 0.0.1</p>
+				<p>jQwiki version 0.0.2</p>
 				<a href='http://validator.w3.org/check?uri=referer'>valid HTML</a> & <a href='http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fjigglywiki.com'>valid CSS</a>
 			</div>
 
@@ -154,6 +297,7 @@ pre.code{font-size:1em;font-family:courier;color:#00C7FF;background:#111;border:
 			<div class="hentry">
 				<h2 class="entry-title {macro: 'view', data: 'title'}"></h2>
 				<dl class="meta {macro: 'view', data: 'meta'}"></dl>
+				<div class="controls {macro: 'entry', entry:'ViewEntryControls'}"></div>
 				<div class="entry-content {macro: 'view', data: 'content'}"></div>
 				<ul class="tags {macro: 'view', data: 'tags', elements: 'links'}"></ul>
 			</div>
@@ -177,6 +321,7 @@ pre.code{font-size:1em;font-family:courier;color:#00C7FF;background:#111;border:
 			<div class="hentry edit">
 				<input type='text' class="entry-title {macro: 'edit', data:'title'}">
 				<dl class="meta {macro: 'view', data: 'meta'}"></dl>
+				<div class="controls {macro: 'entry', entry:'EditEntryControls'}"></div>
 				<textarea class="entry-content {macro: 'edit', data: 'content'}"></textarea>
 				<ul class="tags {macro: 'view', data: 'tags'}"></ul>
 			</div>
@@ -188,6 +333,36 @@ pre.code{font-size:1em;font-family:courier;color:#00C7FF;background:#111;border:
 		<li><a href='#entry_template' rel='tag'>template</a></li>
 	</ul>
 </div>
+<div class='hentry system' id='entry_ViewEntryControls'>
+	<h2 class='entry-title'>ViewEntryControls</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<a href='#' title='edit'>edit</a><a href='#' title='close'>close</a>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
+	</ul>
+</div>
+
+
+<div class='hentry system' id='entry_EditEntryControls'>
+	<h2 class='entry-title'>EditEntryControls</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<a href='#' title='cancel'>cancel</a><a href='#' title='delete'>delete</a>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
+	</ul>
+</div>
+
+
 <div class='hentry system' id='entry_DefaultEntries'>
 	<h2 class='entry-title'>DefaultEntries</h2>
 	<dl class='meta'>
@@ -346,7 +521,7 @@ jqw.expandMacros = function(source, name) {
 };
 
 
-// Displauy the entries listed in a given entry.
+// Display the entries listed in a given entry.
 jqw.displayListedEntries = function(name) {
 	var content = $('#'+jqw.entryID(name)).find('div.entry-content');
 	jqw.findEntryLinks(content).each(function(index) {
@@ -370,6 +545,9 @@ jqw.displayEntry = function(name, options) {
 	};
 	var opt = $.extend({}, defaults, options);
 	var entry = jqw.applyTemplate(name, opt.template);
+	
+	//add an id to the entry so that we can rapidly find it in the display.
+	entry.attr({id: name});
 		
 	// display the entry in the appropriate place.
 	if(opt.position == 'top') {
@@ -411,7 +589,7 @@ jqw.execute = function(args) {
 
 //find an entry in the display by its title.
 jqw.findDisplayedEntry = function(name) {
-	return $('#content').find(jqw.api.title+":contains("+ name +")").parents(jqw.api.entry);
+	return $('#' + name);
 };
 
 
@@ -431,7 +609,7 @@ jqw.entryName = function(id) {
 // entry API.
 jqw.api = {
 	entry: 'div.hentry',
-	title: 'h2.entry-title',
+	title: '.entry-title',
 	content : 'div.entry-content',
 	meta : 'dl.meta',
 	tags: 'ul.tags'
@@ -448,22 +626,58 @@ jqw.addEventHandlers = function() {
 		var btn = $(ev.target);
 		
 		/*
-			TODO handle the commands.
+			TODO handle the global commands.
 		*/
 		
 		return false;
 	});
 	
 	
-	$('#content').dblclick(function(ev) {	
+	$('#content').click(function(ev) {
 		var $target = $(ev.target);
-		if($target.is('div.hentry')) {
-			jqw.displayEntry($target.find(jqw.api.title).text(), {position:'replace', template:'EditTemplate'});
+		
+		// entry control buttons
+		if($target.is('div.hentry div.controls a')) {
+			var entry = $target.parents(jqw.api.entry);
+			var name = entry.attr('id');
+			
+			// edit button
+			if($target.attr('title') == 'edit') {
+				jqw.controls.editEntry(name);
+			}
+			
+			// cancel button
+			else if($target.attr('title') == 'cancel') {
+				jqw.controls.cancelEditEntry(name);
+			}
+			
+			// close button
+			else if($target.attr('title') == 'close') {
+				jqw.controls.closeEntry(name);
+			}
+			
+			return false;
 		}
 	});
 	
 };
 
+
+jqw.controls = {};
+
+jqw.controls.editEntry = function(name){
+	$('#'+name).trigger('editEntry.jqwiki');
+	jqw.displayEntry(name, {position:'replace', template:'EditTemplate'});
+};
+
+jqw.controls.cancelEditEntry = function(name) {
+	$('#'+name).trigger('cancelEditEntry.jqwiki');	
+	jqw.displayEntry(name, {position:'replace', template:'ViewTemplate'});
+};
+
+jqw.controls.closeEntry = function(name) {
+	$('#'+name).trigger('closeEntry.jqwiki').remove();
+};
 jqw.macros = {};
 
 // View Macro.
@@ -483,17 +697,28 @@ jqw.macros.edit = function(args) {
 // Entry Macro.
 // Transcludes the content of an entry into the element from where the macro was called.
 jqw.macros.entry = function(args) {
-	console.log('Entry: ', args);
-	
-	var source = $('#'+jqw.entryID(args.entry));
-	
-	var content = source.find(jqw.api.content).html();
+	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
 	$(args.place).append(content);
 };
 
 
 
 
+
+$(document).ready(function() {
+	
+	//listen for jQwiki events.
+	$(document).bind('editEntry.jqwiki', function(event) {
+		console.log('editEntry: ', $(event.target), event.timeStamp);
+	});
+	$(document).bind('cancelEditEntry.jqwiki', function(event) {
+		console.log('cancelEditEntry: ', $(event.target), event.timeStamp);
+	});
+	$(document).bind('closeEntry.jqwiki', function(event) {
+		console.log('closeEntry: ', $(event.target), event.timeStamp);
+	});
+
+});
 
 
 		
