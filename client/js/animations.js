@@ -1,9 +1,12 @@
-// Define the animation effect for the tiddler display.
-jQuery.fn.tiddlerDisplayAnim = function(options) {
+// Define the animation effect for opening an entry.
+jQuery.fn.entryDisplayEffect = function(options) {
 	var defaults = {
 		animSrc: null
 	};
-	var opts = $.extend(defaults, options);
+	var opts = $.extend({}, defaults, options);
+	
+	console.log('animating: ', opts);
+	
 	var ghost = $('<div id=\'ghost\'></div>');
 	if(!opts.animSrc) {
 		return;

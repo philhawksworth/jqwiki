@@ -176,6 +176,4 @@ pre.code {
 	overflow: auto;
 }
 
-.gotcha {
-	background-color:red;
-}
+#ghost {background-color:#bbb; border:solid 3px #000; z-index:10; position:absolute;}

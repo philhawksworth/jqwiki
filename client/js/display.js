@@ -22,7 +22,6 @@ jqw.applyTemplate = function(name, templateName) {
 
 // find macros and execute them.
 jqw.expandMacros = function(destination, sourceEntry) {
-	
 	var k, data;
 	destination.each(function(index) {
 		k = $(this);
@@ -31,7 +30,6 @@ jqw.expandMacros = function(destination, sourceEntry) {
 		});
 		data = k.metadata();
 		if(data && data.macro) {
-			
 			if(jqw.macros[data.macro]) {
 				data['source'] = $('#'+jqw.entryID(sourceEntry));
 				data['place'] = k;
@@ -41,7 +39,6 @@ jqw.expandMacros = function(destination, sourceEntry) {
 			}
 		}
 	});
-	
 	return destination;
 };
 
@@ -74,13 +71,16 @@ jqw.displayEntry = function(name, options) {
 	
 	// don't open an entry more than once.
 	if(jqw.findDisplayedEntry(name).length > 0 && opt.position != 'replace') {
-		return;
+		var entry = jqw.findDisplayedEntry(name);
+	} else {
+		var entry = jqw.applyTemplate(name, opt.template);
 	}
 	
-	var entry = jqw.applyTemplate(name, opt.template);
+
 	
 	//add an id to the entry so that we can rapidly find it in the display.
 	entry.attr({id: name});
+
 		
 	// display the entry in the appropriate place.
 	if(opt.position == 'top') {
@@ -93,5 +93,6 @@ jqw.displayEntry = function(name, options) {
 	} else if(opt.position == 'after') {
 		opt.sourceEntry.after(entry);
 	}
+	entry.entryDisplayEffect({animSrc: opt.sourceElement});
 	
 };
