@@ -194,6 +194,9 @@ pre.code {
 	overflow: auto;
 }
 
+.gotcha {
+	background-color:red;
+}
 
 	</style>
 	
@@ -240,7 +243,12 @@ pre.code {
 		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
 	</dl>
 	<div class='entry-content'>
-		<p>That's me!</p>
+		<p>Phil works as a Technical Director at <a href="http://theteam.co.uk">TheTeam</a> where he focusses on delivering Web content in the best ways he can find.  With a particular interest in <a href="http://unobtrusify.com" title="Unobtrusify.com">unobtrusive</a> technologies and accessibility, Phil is always playing with new techniques and approaches.</p>
+		<ul>
+			<li><a href="http://hawksworx.com">hawksworx.com</a></li>
+			<li><a href="http://twitter.com/philhawksworth">twitter.com/philhawksworth</a></li>
+			<li><a href="http://flickr.com/photos/philhawksworth">flickr.com/photos/philhawksworth</a></li>
+		</ul>
 	</div>
 	<ul class='tags'>
 		<li><a href='#entry_People' rel='tag'>People</a></li>
@@ -268,13 +276,19 @@ pre.code {
 		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
 	</dl>
 	<div class='entry-content'>
+		<h3>version 0.0.3</h3>
+		<ul>
+			<li>Entry textarea resizes automatically during edits. Provided by a <a href='#entry_jQueryPlugins' class='entryLink'>jQuery Plugin</a></li>
+		</ul>
 		<h3>version 0.0.2</h3>
 		<ul>
-			<li>Added page templating</li>
-			<li>Added entry templating</li>
-			<li>Added simple macro engine</li>
-			<li>Events now fired for key stages of startup process</li>
-			<li>Events now fired for editing and closing entries</li>
+			<li>Added page templating.</li>
+			<li>Added entry templating.</li>
+			<li>Added simple macro engine.</li>
+			<li>Events now fired for key stages of startup process.</li>
+			<li>Events now fired for editing and closing entries.</li>
+			<li>EntryLinks open entries into the display.</li>
+			<li>Basic animation added for closing an entry.</li>
 		</ul>
 		<h3>version 0.0.1</h3>
 		<ul>
@@ -286,6 +300,23 @@ pre.code {
 		</ul>
 	</div>
 	<ul class='tags'>
+		<li><a href='#entry_About' rel='tag'>About</a></li>		
+	</ul>
+</div>
+<div class='hentry' id='entry_jQueryPlugins'>
+	<h2 class='entry-title'>jQueryPlugins</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<ul>
+			<li><a href="http://plugins.jquery.com/project/autoExpand" title="jQuery autoexpand plugin">jquery.autoexpand.js</a></li>
+			<li><a href="http://plugins.jquery.com/project/metadata" title="jQuery metadata plugin">jquery.metadata.js</a></li>
+		</ul>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_About' rel='tag'>About</a></li>		
 	</ul>
 </div>
 
@@ -300,18 +331,13 @@ pre.code {
 	<div class='entry-content'>
 
 		<pre class='code'>
-			
 			<div id='header'>
-				<h1 id='title' class="{macro: 'entry', entry: 'SiteTitle'}"></h1>
-				<h2 id='subtitle' class="{macro: 'entry', entry: 'SiteSubtitle'}"></h2>			
+				<h1 id='title' class="macro {macro: 'entry', entry: 'SiteTitle'}"></h1>
+				<h2 id='subtitle' class="macro {macro: 'entry', entry: 'SiteSubtitle'}"></h2>	
 			</div>
-			<div id='controls'><a href='#' title='Create a new entry' class='newEntry'>New entry</a><a href='#' title='Save the wiki' class='save'>Save</a><a href='#' title='Save a copy to your hardrive' class='download'>Save a copy</a></div>
+			<div id='controls' class="macro {macro: 'entry', entry: 'GlobalControls'}"></div>
 			<div id='content'></div>
-			<div id='footer'>
-				<p>jQwiki version 0.0.2</p>
-				<a href='http://validator.w3.org/check?uri=referer'>valid HTML</a> & <a href='http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fjigglywiki.com'>valid CSS</a>
-			</div>
-
+			<div id='footer' class="macro {macro: 'entry', entry: 'PageFooter'}"></div>	
 		</pre>
 
 	</div>
@@ -398,6 +424,21 @@ pre.code {
 </div>
 
 
+<div class='hentry system' id='entry_GlobalControls'>
+	<h2 class='entry-title'>GlobalControls</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<a href='#' title='Create a new entry' class='newEntry'>New entry</a><a href='#' title='Save the wiki' class='save'>Save</a><a href='#' title='Save a copy to your hardrive' class='download'>Save a copy</a>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
+	</ul>
+</div>
+
+
 <div class='hentry system' id='entry_DefaultEntries'>
 	<h2 class='entry-title'>DefaultEntries</h2>
 	<dl class='meta'>
@@ -445,6 +486,20 @@ pre.code {
 </div>
 
 
+<div class='hentry system' id='entry_PageFooter'>
+	<h2 class='entry-title'>PageFooter</h2>
+	<dl class='meta'>
+		<dt>modifier</dt><dd>PhilHawksworth</dd>
+		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
+	</dl>
+	<div class='entry-content'>
+		<p>jQwiki <a href='#entry_ReleaseNotes' class='entryLink'>version 0.0.2</a></p>
+		<a href='http://validator.w3.org/check?uri=referer'>valid HTML</a> & <a href='http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fjqwiki.com'>valid CSS</a>
+	</div>
+	<ul class='tags'>
+		<li><a href='#entry_system' rel='tag'>system</a></li>
+	</ul>
+</div>
 
 
 	</div>
@@ -485,46 +540,58 @@ pre.code {
  */
 (function($){$.extend({metadata:{defaults:{type:'class',name:'metadata',cre:/({.*})/,single:'metadata'},setType:function(type,name){this.defaults.type=type;this.defaults.name=name;},get:function(elem,opts){var settings=$.extend({},this.defaults,opts);if(!settings.single.length)settings.single='metadata';var data=$.data(elem,settings.single);if(data)return data;data="{}";if(settings.type=="class"){var m=settings.cre.exec(elem.className);if(m)data=m[1];}else if(settings.type=="elem"){if(!elem.getElementsByTagName)return;var e=elem.getElementsByTagName(settings.name);if(e.length)data=$.trim(e[0].innerHTML);}else if(elem.getAttribute!=undefined){var attr=elem.getAttribute(settings.name);if(attr)data=attr;}if(data.indexOf('{')<0)data="{"+data+"}";data=eval("("+data+")");$.data(elem,settings.single,data);return data;}}});$.fn.metadata=function(opts){return $.metadata.get(this[0],opts);};})(jQuery);
 
+// jQuery.autoExpand Textarea (1.0)
+// Sebastian Geidies (geidies@gmail.com)
+// 
+// Use and distibution is allowed under the terms & conditions of the GPL (http://www.gnu.org/licenses/gpl.html).
+// This script requires jQuery to work. Download jQuery at http://jquery.com
+
+(function($){
+  $.fn.autoExpand = function(minheight){
+    var minheight = minheight && !isNaN(parseInt(minheight, 10)) ? minheight : 120;
+    var self = $(this);
+    self.each(function(){
+      var i = $(".autoexpand_clone").length;
+      var obj = $(this);
+      var lineheight = $("<p/>").width(obj.width()).appendTo("body").attr("id", "autoexpand_clone_"+i.toString(10) ).addClass("autoexpand_clone")
+      .css({"position":"absolute",
+          "left": (-1*obj.width())+"px",
+          "top": "0px",
+          "line-height": obj.css("line-height"),
+          "font-size": obj.css("font-size"),
+          "font-family": obj.css("font-family"),
+          "overflow":"visible" }).html("Ayg<br>").height() + 2;
+       $("#autoexpand_clone_" + i.toString(10) ).css("line-height", lineheight + "px");
+       var expand = function(){
+         var h = $("#autoexpand_clone_" + i.toString(10) ).html( obj.val().replace(/\n/g,"<br/>") ).height() + lineheight;
+         obj.animate( {"height": h > minheight ? h : minheight } ,80 );
+      };
+      expand();
+      obj.keyup(function(){
+        expand();
+      });
+    });
+    return self;
+  };
+})(jQuery);
 
 		
 	</script>
 	<script type="text/javascript" charset="utf-8">
 		
-$(document).ready(function() {
-	
-	
-	
-	// report firing of for jQwiki events.
-	$(document).bind('editEntry.jqwiki', function(event) {
-		console.log('editEntry: ', $(event.target), event.timeStamp);
-	});
-	$(document).bind('cancelEditEntry.jqwiki', function(event) {
-		console.log('cancelEditEntry: ', $(event.target), event.timeStamp);
-	});
-	$(document).bind('closeEntry.jqwiki', function(event) {
-		console.log('closeEntry: ', $(event.target), event.timeStamp);
-	});
-
-
-
-	$(document).bind('init.jqwiki', function(event) {
-		console.log('init ', $(event.target), event.timeStamp);
-	});
-	$(document).bind('hideStore.jqwiki', function(event) {
-		console.log('hideStore ', $(event.target), event.timeStamp);
-	});
-	$(document).bind('applyPageTemplate.jqwiki', function(event) {
-		console.log('applyPageTemplate: ', $(event.target), event.timeStamp);
-	});
-	$(document).bind('displayDefaultEntries.jqwiki', function(event) {
-		console.log('displayDefaultEntries: ', $(event.target), event.timeStamp);
-	});
-
-
-});
-
 // Let's not pollute the global namespace.
 var jqw = {};
+
+
+// entry API.
+// What are the query expressions to return the desired entry elements?
+jqw.api = {
+	entry: 'div.hentry',
+	title: '.entry-title',
+	content : 'div.entry-content',
+	meta : 'dl.meta',
+	tags: 'ul.tags'
+};
 
 
 // DOM ready. Let's boogie.
@@ -557,6 +624,183 @@ jqw.init = function() {
 };
 
 
+// generate an entry ID
+jqw.entryID = function(name) {
+	return "entry_" + name.replace(" ","_");
+};
+
+
+// generate entry natural name
+jqw.entryName = function(id) {
+	return id.substr(7).replace("_"," ");
+};
+
+
+// Find the Entry links in an element or string.
+jqw.findEntryLinks = function(source) {
+	return $(source).find('a.entryLink');
+};
+
+
+// Execute a script entry (or a collection by tag)
+jqw.execute = function(args) {
+	
+	// gather the scripts
+	var scripts = [];
+	if(typeof args == 'object') {
+		$('div.'+ args.tag).each(function(index) {
+			var entry = $(this);
+			scripts.push( entry.find('pre').html());
+		});
+	} else if (typeof args == 'string') {
+		scripts.push( $('#'+jqw.entryID(args)).find('pre').html() );
+	}
+	
+	// execute them
+	for (var s=0; s < scripts.length; s++) {
+		try {
+			(new Function( scripts[s] ))();
+		} catch(e){
+			console.log(e.message);
+		}
+	};
+};
+
+
+
+
+
+
+
+
+jqw.addEventHandlers = function() {
+
+	$('#controls a').click(function(ev){
+		var btn = $(ev.target);
+		
+		/*
+			TODO handle the global commands.
+		*/
+		
+		return false;
+	});
+	
+	
+	$('#content').click(function(ev) {
+		var $target = $(ev.target);
+		var entry = $target.parents(jqw.api.entry);	
+		
+		// entry links
+		if($target.is('a.entryLink')) {
+			$target.trigger('entryLinkClick.jqwiki');
+			var name = jqw.entryName($target.attr('href'));
+			jqw.displayEntry(name, {position: 'after', sourceEntry: entry, sourceElement: $target});
+			$target.blur();	
+			return false;
+		}
+		
+		// entry control buttons
+		if($target.is('div.hentry div.controls a')) {
+
+			var name = entry.attr('id');
+			
+			// edit button
+			if($target.attr('title') == 'edit') {
+				jqw.controls.editEntry(name);
+			}
+			
+			// cancel button
+			else if($target.attr('title') == 'cancel') {
+				jqw.controls.cancelEditEntry(name);
+			}
+			
+			// close button
+			else if($target.attr('title') == 'close') {
+				jqw.controls.closeEntry(name);
+			}
+	
+			return false;
+		}
+	});
+	
+	// footer event handlers.
+	$('#footer a.entryLink').click(function(ev) {
+		var $target = $(ev.target);
+		$target.trigger('entryLinkClick.jqwiki');
+		var name = jqw.entryName($target.attr('href'));
+		
+		console.log('click: ', name, $target);
+		
+		jqw.displayEntry(name, {position: 'bottom', sourceElement: $target});
+		$target.blur();	
+		return false;
+	});
+		
+	$(document).trigger('addEventHandlers.jqwiki');	
+};
+
+
+jqw.controls = {};
+
+jqw.controls.editEntry = function(name){
+	$('#'+name).trigger('editEntry.jqwiki');
+	jqw.displayEntry(name, {position:'replace', template:'EditTemplate'});
+};
+
+jqw.controls.cancelEditEntry = function(name) {
+	$('#'+name).trigger('cancelEditEntry.jqwiki');	
+	jqw.displayEntry(name, {position:'replace', template:'ViewTemplate'});
+};
+
+jqw.controls.closeEntry = function(name) {
+	$('#'+name).trigger('closeEntry.jqwiki').slideUp(300, function(){
+		$(this).remove();
+	});
+};
+jqw.macros = {};
+
+// View Macro.
+// Finds content from the store and appends it into the element from where the macro was called.
+jqw.macros.view = function(args) {
+	var content = args.source.find(jqw.api[args.data]).html();
+	$(args.place).append(content);
+	
+	console.log("View:", $(args.place), content);
+	
+};
+
+// Edit Macro.
+// Finds content from the store and use it to populate the input element from where the macro was called.
+jqw.macros.edit = function(args) {
+
+	var content = args.source.find(jqw.api[args.data]).html();	
+	
+	console.log('args.place', args.place);
+	
+	$(args.place).val($.trim(content.replace(/\t/g,"")));
+ 	// $(args.place).val("bar");
+	
+	// var place = $(args.place).prependTo('body');
+	// console.log('boo', place, $('<p>foo</p>'));
+	// place.val("boo");
+	// console.log('place',place);
+
+	// console.log("edit:", $(args.place), content);
+	
+};
+
+// Entry Macro.
+// Transcludes the content of an entry into the element from where the macro was called.
+jqw.macros.entry = function(args) {
+	
+	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
+	$(args.place).append(content);
+	console.log("Entry:", $(args.place), content);	
+};
+
+
+
+
 
 
 // Apply a template to build the UI.
@@ -573,30 +817,35 @@ jqw.applyPageTemplate = function(name) {
 
 
 // Apply a template to build the UI.
-jqw.applyTemplate = function(name, template) {
-	var templated = $($('#'+jqw.entryID(template)).find('div.entry-content pre').clone().html());	
-	templated =  jqw.expandMacros(templated, name);
+jqw.applyTemplate = function(name, templateName) {
+	var template = $($('#'+jqw.entryID(templateName)).find('div.entry-content pre').clone());
+	templated =  jqw.expandMacros(template, name);
 	return templated;
 };
 
 
 // find macros and execute them.
-jqw.expandMacros = function(source, name) {
+jqw.expandMacros = function(destination, sourceEntry) {
 	
-	var data;
-	source.contents().each(function(index) {
+	// destination.each(function(index) {
+	// 	console.log('this: ', $(this));
+	// });
+	
+	
+	
+	destination.find('*').each(function(index) {
 		data = $(this).metadata();
-		data['source'] = $('#'+jqw.entryID(name));
-		data['place'] = this;
-		if($(this).metadata() && data.macro) {
+		if(data && data.macro !== undefined)
 			if(jqw.macros[data.macro]) {
+				data['source'] = $('#'+jqw.entryID(sourceEntry));
+				data['place'] = $(this);
 				jqw.macros[data.macro](data);
 			} else {
 				console.log('Error: No macro called ', data.macro);
 			}
-		}
 	});
-	return source;
+	
+	return $(destination.html());
 };
 
 
@@ -609,9 +858,9 @@ jqw.displayListedEntries = function(name) {
 };
 
 
-// Find the Entry links in an element or string.
-jqw.findEntryLinks = function(source) {
-	return $(source).find('a.entryLink');
+//find an entry in the display by its title.
+jqw.findDisplayedEntry = function(name) {
+	return $('#' + name);
 };
 
 
@@ -647,162 +896,23 @@ jqw.displayEntry = function(name, options) {
 	} else if(opt.position == 'after') {
 		opt.sourceEntry.after(entry);
 	}
+	
 };
 
-
-// Execute a script entry (or a collection by tag)
-jqw.execute = function(args) {
-	
-	// gather the scripts
-	var scripts = [];
-	if(typeof args == 'object') {
-		$('div.'+ args.tag).each(function(index) {
-			var entry = $(this);
-			scripts.push( entry.find('pre').html());
-		});
-	} else if (typeof args == 'string') {
-		scripts.push( $('#'+jqw.entryID(args)).find('pre').html() );
-	}
-	
-	// execute them
-	for (var s=0; s < scripts.length; s++) {
-		try {
-			(new Function( scripts[s] ))();
-		} catch(e){
-			console.log(e.message);
-		}
+// Define the animation effect for the tiddler display.
+jQuery.fn.tiddlerDisplayAnim = function(options) {
+	var defaults = {
+		animSrc: null
 	};
-
+	var opts = $.extend(defaults, options);
+	var ghost = $('<div id=\'ghost\'></div>');
+	if(!opts.animSrc) {
+		return;
+	}
+	$('body').append(ghost);
+	ghost.css({opacity: '0.3', width: opts.animSrc.width(), height: opts.animSrc.height(), top: opts.animSrc.offset().top, left: opts.animSrc.offset().left} );
+	ghost.animate({width: this.width(), height: this.height(), top: this.offset().top, left: this.offset().left} , 500, function() { ghost.remove(); });
 };
-
-
-//find an entry in the display by its title.
-jqw.findDisplayedEntry = function(name) {
-	return $('#' + name);
-};
-
-
-// generate an entry ID
-jqw.entryID = function(name) {
-	return "entry_" + name.replace(" ","_");
-};
-
-
-// generate entry natural name
-jqw.entryName = function(id) {
-	return id.substr(7).replace("_"," ");
-};
-
-
-
-// entry API.
-jqw.api = {
-	entry: 'div.hentry',
-	title: '.entry-title',
-	content : 'div.entry-content',
-	meta : 'dl.meta',
-	tags: 'ul.tags'
-};
-
-
-
-
-
-
-jqw.addEventHandlers = function() {
-
-	$('#controls a').click(function(ev){
-		var btn = $(ev.target);
-		
-		/*
-			TODO handle the global commands.
-		*/
-		
-		return false;
-	});
-	
-	
-	$('#content').click(function(ev) {
-		var $target = $(ev.target);
-		var entry = $target.parents(jqw.api.entry);	
-		
-		// entry links
-		if($target.is('a.entryLink')) {
-			$target.trigger('entryLinkClick.jqwiki');
-			var name = jqw.entryName($target.attr('href'));
-			jqw.displayEntry(name, {position: 'after', sourceEntry: entry, sourceElement: $target});	
-		}
-		
-		// entry control buttons
-		if($target.is('div.hentry div.controls a')) {
-
-			var name = entry.attr('id');
-			
-			// edit button
-			if($target.attr('title') == 'edit') {
-				jqw.controls.editEntry(name);
-			}
-			
-			// cancel button
-			else if($target.attr('title') == 'cancel') {
-				jqw.controls.cancelEditEntry(name);
-			}
-			
-			// close button
-			else if($target.attr('title') == 'close') {
-				jqw.controls.closeEntry(name);
-			}
-			
-			return false;
-		}
-	});
-	
-	$(document).trigger('addEventHandlers.jqwiki');	
-};
-
-
-jqw.controls = {};
-
-jqw.controls.editEntry = function(name){
-	$('#'+name).trigger('editEntry.jqwiki');
-	jqw.displayEntry(name, {position:'replace', template:'EditTemplate'});
-};
-
-jqw.controls.cancelEditEntry = function(name) {
-	$('#'+name).trigger('cancelEditEntry.jqwiki');	
-	jqw.displayEntry(name, {position:'replace', template:'ViewTemplate'});
-};
-
-jqw.controls.closeEntry = function(name) {
-	$('#'+name).trigger('closeEntry.jqwiki').remove();
-};
-jqw.macros = {};
-
-// View Macro.
-// Finds content from the store and appends it into the element from where the macro was called.
-jqw.macros.view = function(args) {
-	var content = args.source.find(jqw.api[args.data]).html();
-	$(args.place).append(content);
-};
-
-// Edit Macro.
-// Finds content from the store and use it to populate the input element from where the macro was called.
-jqw.macros.edit = function(args) {
-	var content = args.source.find(jqw.api[args.data]).html();
-	$(args.place).val($.trim(content.replace(/\t/g,"")));
-};
-
-// Entry Macro.
-// Transcludes the content of an entry into the element from where the macro was called.
-jqw.macros.entry = function(args) {
-	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
-	$(args.place).append(content);
-};
-
-
-
-
-
 
 		
 	</script>

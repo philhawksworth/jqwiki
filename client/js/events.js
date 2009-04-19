@@ -20,7 +20,9 @@ jqw.addEventHandlers = function() {
 		if($target.is('a.entryLink')) {
 			$target.trigger('entryLinkClick.jqwiki');
 			var name = jqw.entryName($target.attr('href'));
-			jqw.displayEntry(name, {position: 'after', sourceEntry: entry, sourceElement: $target});	
+			jqw.displayEntry(name, {position: 'after', sourceEntry: entry, sourceElement: $target});
+			$target.blur();	
+			return false;
 		}
 		
 		// entry control buttons
@@ -42,10 +44,23 @@ jqw.addEventHandlers = function() {
 			else if($target.attr('title') == 'close') {
 				jqw.controls.closeEntry(name);
 			}
-			
+	
 			return false;
 		}
 	});
 	
+	// footer event handlers.
+	$('#footer a.entryLink').click(function(ev) {
+		var $target = $(ev.target);
+		$target.trigger('entryLinkClick.jqwiki');
+		var name = jqw.entryName($target.attr('href'));
+		
+		console.log('click: ', name, $target);
+		
+		jqw.displayEntry(name, {position: 'bottom', sourceElement: $target});
+		$target.blur();	
+		return false;
+	});
+		
 	$(document).trigger('addEventHandlers.jqwiki');	
 };

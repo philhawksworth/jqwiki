@@ -3,6 +3,8 @@ system: ViewTemplate.html
 system: EditTemplate.html
 system: ViewEntryControls.html
 system: EditEntryControls.html
+system: GlobalControls.html
 system: DefaultEntries.html
 system: SiteTitle.html
 system: SiteSubtitle.html
+system: PageFooter.html

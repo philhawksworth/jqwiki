@@ -175,3 +175,7 @@ pre.code {
 	height: 10em;
 	overflow: auto;
 }
+
+.gotcha {
+	background-color:red;
+}

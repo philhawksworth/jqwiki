@@ -7,18 +7,13 @@
 	<div class='entry-content'>
 
 		<pre class='code'>
-			
 			<div id='header'>
-				<h1 id='title' class="{macro: 'entry', entry: 'SiteTitle'}"></h1>
-				<h2 id='subtitle' class="{macro: 'entry', entry: 'SiteSubtitle'}"></h2>			
+				<h1 id='title' class="macro {macro: 'entry', entry: 'SiteTitle'}"></h1>
+				<h2 id='subtitle' class="macro {macro: 'entry', entry: 'SiteSubtitle'}"></h2>	
 			</div>
-			<div id='controls'><a href='#' title='Create a new entry' class='newEntry'>New entry</a><a href='#' title='Save the wiki' class='save'>Save</a><a href='#' title='Save a copy to your hardrive' class='download'>Save a copy</a></div>
+			<div id='controls' class="macro {macro: 'entry', entry: 'GlobalControls'}"></div>
 			<div id='content'></div>
-			<div id='footer'>
-				<p>jQwiki version 0.0.2</p>
-				<a href='http://validator.w3.org/check?uri=referer'>valid HTML</a> & <a href='http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fjigglywiki.com'>valid CSS</a>
-			</div>
-
+			<div id='footer' class="macro {macro: 'entry', entry: 'PageFooter'}"></div>	
 		</pre>
 
 	</div>

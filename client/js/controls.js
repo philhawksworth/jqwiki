@@ -12,5 +12,7 @@ jqw.controls.cancelEditEntry = function(name) {
 };
 
 jqw.controls.closeEntry = function(name) {
-	$('#'+name).trigger('closeEntry.jqwiki').remove();
+	$('#'+name).trigger('closeEntry.jqwiki').slideUp(300, function(){
+		$(this).remove();
+	});
 };
