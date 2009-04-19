@@ -1,7 +1,40 @@
-html,body,div,h1,h2,h3,h3,dl,dd,dt{padding:0;margin:0;}
-body{font:normal 12px/1.4 Georgia;padding:1em;}
-a:link,a:visited{color:#1E52CD;}
-a:hover,a:focus{color:#DB7E08;}
-div.system{display:none;}
+html,body,div,h1,h2,h3,h3,dl,dd,dt {
+	padding: 0;
+	margin: 0;
+}
+body {
+	font: normal 12px/1.5 Georgia;
+	padding: 1em;
+}
+a:link,a:visited {
+	color: #1E52CD;
+	text-decoration:none;
+}
+a:hover,a:focus {
+	color: #fff;
+	background-color:#1E52CD;
+}
+a.entryLink:link,a.entryLink:visited {
+	border-bottom:solid 1px #1E52CD;
+	padding:0px 0px;
+}
+a.entryLink:hover,a.entryLink:focus {
+	color: #fff;
+	background-color:#1E52CD;
+	text-decoration:none;
+	padding:1px 2px;
+	margin-left:-2px;
+	margin-right:-2px;
+}
+
+a[href=^'http'] {
+	color:red;
+}
+
+div.system {
+	display: none;
+}
 /* FOUC avoideance. */
-html.js > div{display:none;}
+html.js > div {
+	display: none;
+}

@@ -4,9 +4,6 @@ jQuery.fn.entryDisplayEffect = function(options) {
 		animSrc: null
 	};
 	var opts = $.extend({}, defaults, options);
-	
-	console.log('animating: ', opts);
-	
 	var ghost = $('<div id=\'ghost\'></div>');
 	if(!opts.animSrc) {
 		return;

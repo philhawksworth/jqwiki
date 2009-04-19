@@ -7,7 +7,7 @@ var jqw = {};
 jqw.api = {
 	entry: 'div.hentry',
 	title: '.entry-title',
-	content : 'div.entry-content',
+	content : '.entry-content',
 	meta : 'dl.meta',
 	tags: 'ul.tags'
 };
@@ -53,6 +53,14 @@ jqw.entryID = function(name) {
 jqw.entryName = function(id) {
 	return id.substr(7).replace("_"," ");
 };
+
+
+// find the entry in the store which corresponds to one in the story.
+jqw.findStoredEntry = function(div) {
+	var title = $(div).find(jqw.api.title).text();
+	return $('#'+jqw.entryID(title));
+};
+
 
 
 // Find the Entry links in an element or string.

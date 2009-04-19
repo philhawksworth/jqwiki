@@ -8,13 +8,46 @@
 	<meta name="generator" content="TextMate http_//macromates.com/">
 	<meta name="author" content="Phil Hawksworth">	
 	<style type="text/css" media="screen">
-html,body,div,h1,h2,h3,h3,dl,dd,dt{padding:0;margin:0;}
-body{font:normal 12px/1.4 Georgia;padding:1em;}
-a:link,a:visited{color:#1E52CD;}
-a:hover,a:focus{color:#DB7E08;}
-div.system{display:none;}
+html,body,div,h1,h2,h3,h3,dl,dd,dt {
+	padding: 0;
+	margin: 0;
+}
+body {
+	font: normal 12px/1.5 Georgia;
+	padding: 1em;
+}
+a:link,a:visited {
+	color: #1E52CD;
+	text-decoration:none;
+}
+a:hover,a:focus {
+	color: #fff;
+	background-color:#1E52CD;
+}
+a.entryLink:link,a.entryLink:visited {
+	border-bottom:solid 1px #1E52CD;
+	padding:0px 0px;
+}
+a.entryLink:hover,a.entryLink:focus {
+	color: #fff;
+	background-color:#1E52CD;
+	text-decoration:none;
+	padding:1px 2px;
+	margin-left:-2px;
+	margin-right:-2px;
+}
+
+a[href=^'http'] {
+	color:red;
+}
+
+div.system {
+	display: none;
+}
 /* FOUC avoideance. */
-html.js > div{display:none;}
+html.js > div {
+	display: none;
+}
 
 html,body {
 	padding: 0;
@@ -41,10 +74,10 @@ html,body {
 	padding: 10px;
 	font-size: 0.9em;
 	text-align: right;
-	background-color: #191919;
+	background-color: #ddd;
 }
 #controls a:link,#controls a:visited {
-	background-color:#000;
+	background-color:#444;
 	color: #fff;
 	padding: 3px 9px;
 	margin-right: 3px;
@@ -131,7 +164,46 @@ ul.tags li a:link,ul.tags li a:visited {
 ul.tags li a:hover,ul.tags li a:focus {
 	background-color: #1E52CD;
 	color: #fff;
-	border-top: solid 2px #1A48B4;
+	border-top: solid 2px #1640A3;
+}
+
+a.addTag:link, a.addTag:visited,
+a.doAddTag:link, a.doAddTag:visited,
+a.cancel:link, a.cancel:visited {
+	font-size: 0.8em;
+	background-color: #ddd;
+	color: #333;
+	padding: 3px 8px;
+	margin: 1px 0 0 3px;
+	text-decoration: none;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+a.addTag:hover, a.addTag:focus,
+a.doAddTag:hover, a.doAddTag:focus,
+a.cancel:hover, a.cancel:focus {
+	background-color:#aaa;
+	color:#000;
+}
+
+a.default:link, a.default:visited {
+	background-color:#000;
+	color:#fff;
+}
+a.default:hover, a.default:focus {
+	background-color:#1E52CD;
+}
+
+
+div.tagUI {
+	display:inline;
+	margin:0 0 0 6px;
+	padding:0;
+}
+div.tagUI input {
+	font-size:0.75em;
+	margin:0;
+	width:70px;
 }
 
 div.hentry div.controls {
@@ -145,8 +217,8 @@ div.hentry div.controls a {
 	padding: 3px 9px;
 	margin-right: 3px;
 	text-decoration: none;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
 }
 
 
@@ -154,6 +226,7 @@ div.hentry div.controls a:hover, div.hentry div.control a:focus {
 	background-color:#1E52CD;
 	color:#fff;
 }
+
 
 div.edit div.controls a {
 	background-color: #333;
@@ -276,7 +349,8 @@ pre.code {
 	<div class='entry-content'>
 		<h3>version 0.0.3</h3>
 		<ul>
-			<li>Entry textarea resizes automatically during edits. Provided by a <a href='#entry_jQueryPlugins' class='entryLink'>jQuery Plugin</a></li>
+			<li>Page template bug fixes to ensure correct macro execution.</li>
+			<li>Entry display animation effects.</li>
 		</ul>
 		<h3>version 0.0.2</h3>
 		<ul>
@@ -357,7 +431,7 @@ pre.code {
 				<dl class="meta {macro: 'view', data: 'meta'}"></dl>
 				<div class="controls {macro: 'entry', entry:'ViewEntryControls'}"></div>
 				<div class="entry-content {macro: 'view', data: 'content'}"></div>
-				<ul class="tags {macro: 'view', data: 'tags', elements: 'links'}"></ul>
+				<ul class="tags {macro: 'tags'}"></ul>
 			</div>
 
 		</pre>
@@ -381,7 +455,7 @@ pre.code {
 				<dl class="meta {macro: 'view', data: 'meta'}"></dl>
 				<div class="controls {macro: 'entry', entry:'EditEntryControls'}"></div>
 				<textarea class="entry-content {macro: 'edit', data: 'content'}"></textarea>
-				<ul class="tags {macro: 'view', data: 'tags'}"></ul>
+				<ul class="tags {macro: 'tags'}"></ul>
 			</div>
 
 		</pre>
@@ -413,7 +487,7 @@ pre.code {
 		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
 	</dl>
 	<div class='entry-content'>
-		<a href='#' title='cancel'>cancel</a><a href='#' title='delete'>delete</a>
+		<a href='#' title='delete'>delete</a><a href='#' title='save'>save</a><a href='#' title='cancel'>cancel</a>
 	</div>
 	<ul class='tags'>
 		<li><a href='#entry_system' rel='tag'>system</a></li>
@@ -582,9 +656,6 @@ jQuery.fn.entryDisplayEffect = function(options) {
 		animSrc: null
 	};
 	var opts = $.extend({}, defaults, options);
-	
-	console.log('animating: ', opts);
-	
 	var ghost = $('<div id=\'ghost\'></div>');
 	if(!opts.animSrc) {
 		return;
@@ -602,7 +673,7 @@ var jqw = {};
 jqw.api = {
 	entry: 'div.hentry',
 	title: '.entry-title',
-	content : 'div.entry-content',
+	content : '.entry-content',
 	meta : 'dl.meta',
 	tags: 'ul.tags'
 };
@@ -648,6 +719,14 @@ jqw.entryID = function(name) {
 jqw.entryName = function(id) {
 	return id.substr(7).replace("_"," ");
 };
+
+
+// find the entry in the store which corresponds to one in the story.
+jqw.findStoredEntry = function(div) {
+	var title = $(div).find(jqw.api.title).text();
+	return $('#'+jqw.entryID(title));
+};
+
 
 
 // Find the Entry links in an element or string.
@@ -728,6 +807,11 @@ jqw.addEventHandlers = function() {
 				jqw.controls.cancelEditEntry(name);
 			}
 			
+			// save button
+			else if($target.attr('title') == 'save') {
+				jqw.controls.saveEntry(name);
+			}
+			
 			// close button
 			else if($target.attr('title') == 'close') {
 				jqw.controls.closeEntry(name);
@@ -735,6 +819,40 @@ jqw.addEventHandlers = function() {
 	
 			return false;
 		}
+		
+		// tag UI
+		// show UI.
+		if($target.is('a.addTag')) {
+			var ui = $("<div class='tagUI'><input type='text'><a href='#' class='doAddTag default' title='add a tag'>tag it!</a><a href='#' class='cancel' title='cancel'>cancel</a></div>");
+			$target.hide().after(ui);
+			ui.find('input').focus();			
+			return false;
+		}
+		
+		// cancel tag.
+		if($target.is('div.tagUI a.cancel')) {
+			$target.parents('div.tagUI').hide().prev().show();
+			return false;
+		}
+		
+		// add tag.
+		if($target.is('div.tagUI a.doAddTag')) {
+			
+			var entry = $target.parents(jqw.api.entry);	
+			var newtag = $target.parents('div.tagUI').find('input').val();
+			var stored = jqw.findStoredEntry(entry);
+			
+			// add the tag elements to the stored entry.
+			stored.find(jqw.api.tags).append("<li><a href='#"+ jqw.entryID(newtag) +"' rel='tag'>"+ newtag +"</a></li>");
+
+			// refresh the entry in the display to bring in the new data.
+			jqw.displayEntry(entry.find(jqw.api.title).text(), {position: 'replace', template: 'ViewTemplate'});
+
+			return false;
+		}
+		
+		
+		
 	});
 	
 	// footer event handlers.
@@ -742,9 +860,6 @@ jqw.addEventHandlers = function() {
 		var $target = $(ev.target);
 		$target.trigger('entryLinkClick.jqwiki');
 		var name = jqw.entryName($target.attr('href'));
-		
-		console.log('click: ', name, $target);
-		
 		jqw.displayEntry(name, {position: 'bottom', sourceElement: $target});
 		$target.blur();	
 		return false;
@@ -753,24 +868,47 @@ jqw.addEventHandlers = function() {
 	$(document).trigger('addEventHandlers.jqwiki');	
 };
 
-
 jqw.controls = {};
+
 
 jqw.controls.editEntry = function(name){
 	$('#'+name).trigger('editEntry.jqwiki');
 	jqw.displayEntry(name, {position:'replace', template:'EditTemplate'});
 };
 
+
 jqw.controls.cancelEditEntry = function(name) {
 	$('#'+name).trigger('cancelEditEntry.jqwiki');	
 	jqw.displayEntry(name, {position:'replace', template:'ViewTemplate'});
 };
+
 
 jqw.controls.closeEntry = function(name) {
 	$('#'+name).trigger('closeEntry.jqwiki').slideUp(300, function(){
 		$(this).remove();
 	});
 };
+
+
+jqw.controls.saveEntry = function(name) {
+	var entry = $('#'+name);
+	var entryStore = $('#'+jqw.entryID(name));
+	entry.trigger('saveEntry.jqwiki');	
+	
+	// save content to store.
+	entryStore.find(jqw.api.content).html(entry.find(jqw.api.content).val());
+		
+	// save title to store.
+	entryStore.find(jqw.api.title).html(entry.find(jqw.api.title).val());
+		
+	// if title changed, then update entry identifier and refresh display.
+	
+	// revert to the viewTemplate with the revised data.
+	jqw.displayEntry(name, {position:'replace', template:'ViewTemplate'});
+	
+	// save the document.
+};
+
 jqw.macros = {};
 
 // View Macro.
@@ -781,6 +919,7 @@ jqw.macros.view = function(args) {
 	// console.log("View:", $(args.place), content);
 	
 };
+
 
 // Edit Macro.
 // Finds content from the store and use it to populate the input element from where the macro was called.
@@ -795,6 +934,7 @@ jqw.macros.edit = function(args) {
 	
 };
 
+
 // Entry Macro.
 // Transcludes the content of an entry into the element from where the macro was called.
 jqw.macros.entry = function(args) {
@@ -802,6 +942,35 @@ jqw.macros.entry = function(args) {
 	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
 	$(args.place).append(content);
 	// console.log("Entry:", $(args.place), content);	
+};
+
+
+// Tags Macro.
+// Render a tags list with the UI to add more tags.
+jqw.macros.tags = function(args) {
+
+	var addBtn = "<a href='#' class='addTag' title='add a tag'>+</a>";
+	var delBtn = "<a href='#' class='delTag' title='remove this tag'>x</a>";	
+	var tags = $(args.source.find(jqw.api.tags)).clone().find('li');
+	tags.each(function(index) {
+		console.log('tag: ', this);
+		// $(this).find('a').append(delBtn);
+	});
+
+	$(args.place).append(tags);	
+	tags.parents('ul.tags').after(addBtn);
+	
+	
+	
+	// console.log('tags: ', content);
+	
+
+	// content.append(addBtn);
+		// 
+		// console.log("tags:", $(args.place), content);	
+	
+
+
 };
 
 

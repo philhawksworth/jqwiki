@@ -9,6 +9,7 @@ jqw.macros.view = function(args) {
 	
 };
 
+
 // Edit Macro.
 // Finds content from the store and use it to populate the input element from where the macro was called.
 jqw.macros.edit = function(args) {
@@ -22,6 +23,7 @@ jqw.macros.edit = function(args) {
 	
 };
 
+
 // Entry Macro.
 // Transcludes the content of an entry into the element from where the macro was called.
 jqw.macros.entry = function(args) {
@@ -29,6 +31,35 @@ jqw.macros.entry = function(args) {
 	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
 	$(args.place).append(content);
 	// console.log("Entry:", $(args.place), content);	
+};
+
+
+// Tags Macro.
+// Render a tags list with the UI to add more tags.
+jqw.macros.tags = function(args) {
+
+	var addBtn = "<a href='#' class='addTag' title='add a tag'>+</a>";
+	var delBtn = "<a href='#' class='delTag' title='remove this tag'>x</a>";	
+	var tags = $(args.source.find(jqw.api.tags)).clone().find('li');
+	tags.each(function(index) {
+		console.log('tag: ', this);
+		// $(this).find('a').append(delBtn);
+	});
+
+	$(args.place).append(tags);	
+	tags.parents('ul.tags').after(addBtn);
+	
+	
+	
+	// console.log('tags: ', content);
+	
+
+	// content.append(addBtn);
+		// 
+		// console.log("tags:", $(args.place), content);	
+	
+
+
 };
 
 
