@@ -5,8 +5,7 @@ jqw.macros = {};
 jqw.macros.view = function(args) {
 	var content = args.source.find(jqw.api[args.data]).html();
 	$(args.place).append(content);
-	
-	console.log("View:", $(args.place), content);
+	// console.log("View:", $(args.place), content);
 	
 };
 
@@ -16,16 +15,9 @@ jqw.macros.edit = function(args) {
 
 	var content = args.source.find(jqw.api[args.data]).html();	
 	
-	console.log('args.place', args.place);
+	// console.log('args.place', args.place);
 	
 	$(args.place).val($.trim(content.replace(/\t/g,"")));
- 	// $(args.place).val("bar");
-	
-	// var place = $(args.place).prependTo('body');
-	// console.log('boo', place, $('<p>foo</p>'));
-	// place.val("boo");
-	// console.log('place',place);
-
 	// console.log("edit:", $(args.place), content);
 	
 };
@@ -36,7 +28,7 @@ jqw.macros.entry = function(args) {
 	
 	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
 	$(args.place).append(content);
-	console.log("Entry:", $(args.place), content);	
+	// console.log("Entry:", $(args.place), content);	
 };
 
 

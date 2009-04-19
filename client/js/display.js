@@ -12,9 +12,9 @@ jqw.applyPageTemplate = function(name) {
 };
 
 
-// Apply a template to build the UI.
+// Apply a template to an entry.
 jqw.applyTemplate = function(name, templateName) {
-	var template = $($('#'+jqw.entryID(templateName)).find('div.entry-content pre').clone());
+	var template = $($('#'+jqw.entryID(templateName)).find('div.entry-content pre').html());
 	templated =  jqw.expandMacros(template, name);
 	return templated;
 };
@@ -23,25 +23,26 @@ jqw.applyTemplate = function(name, templateName) {
 // find macros and execute them.
 jqw.expandMacros = function(destination, sourceEntry) {
 	
-	// destination.each(function(index) {
-	// 	console.log('this: ', $(this));
-	// });
-	
-	
-	
-	destination.find('*').each(function(index) {
-		data = $(this).metadata();
-		if(data && data.macro !== undefined)
+	var k, data;
+	destination.each(function(index) {
+		k = $(this);
+		k.children().each(function(index) {
+			jqw.expandMacros($(this), sourceEntry);
+		});
+		data = k.metadata();
+		if(data && data.macro) {
+			
 			if(jqw.macros[data.macro]) {
 				data['source'] = $('#'+jqw.entryID(sourceEntry));
-				data['place'] = $(this);
+				data['place'] = k;
 				jqw.macros[data.macro](data);
 			} else {
 				console.log('Error: No macro called ', data.macro);
 			}
+		}
 	});
 	
-	return $(destination.html());
+	return destination;
 };
 
 

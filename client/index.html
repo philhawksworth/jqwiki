@@ -243,7 +243,7 @@ pre.code {
 		<dt>modified</dt><dd><abbr class="foo" title="2008-10-28T16_21">28/10/2008 16_21</abbr></dd>
 	</dl>
 	<div class='entry-content'>
-		<p>Phil works as a Technical Director at <a href="http://theteam.co.uk">TheTeam</a> where he focusses on delivering Web content in the best ways he can find.  With a particular interest in <a href="http://unobtrusify.com" title="Unobtrusify.com">unobtrusive</a> technologies and accessibility, Phil is always playing with new techniques and approaches.</p>
+		<p>Phil works as a Technical Director at <a href="http://theteam.co.uk">TheTeam</a> where he focusses on delivering Web content in the best ways he can find.  With a particular interest in <a href="http://unobtrusify.com" title="Unobtrusify.com">unobtrusive</a> technologies and accessibility, Phil is always exploring new Web techniques and approaches.</p>
 		<ul>
 			<li><a href="http://hawksworx.com">hawksworx.com</a></li>
 			<li><a href="http://twitter.com/philhawksworth">twitter.com/philhawksworth</a></li>
@@ -333,9 +333,8 @@ pre.code {
 		<pre class='code'>
 			<div id='header'>
 				<h1 id='title' class="macro {macro: 'entry', entry: 'SiteTitle'}"></h1>
-				<h2 id='subtitle' class="macro {macro: 'entry', entry: 'SiteSubtitle'}"></h2>	
-			</div>
-			<div id='controls' class="macro {macro: 'entry', entry: 'GlobalControls'}"></div>
+				<h2 id='subtitle' class="macro {macro: 'entry', entry: 'SiteSubtitle'}"></h2>
+			</div><div id='controls' class="macro {macro: 'entry', entry: 'GlobalControls'}"></div>
 			<div id='content'></div>
 			<div id='footer' class="macro {macro: 'entry', entry: 'PageFooter'}"></div>	
 		</pre>
@@ -764,8 +763,7 @@ jqw.macros = {};
 jqw.macros.view = function(args) {
 	var content = args.source.find(jqw.api[args.data]).html();
 	$(args.place).append(content);
-	
-	console.log("View:", $(args.place), content);
+	// console.log("View:", $(args.place), content);
 	
 };
 
@@ -775,16 +773,9 @@ jqw.macros.edit = function(args) {
 
 	var content = args.source.find(jqw.api[args.data]).html();	
 	
-	console.log('args.place', args.place);
+	// console.log('args.place', args.place);
 	
 	$(args.place).val($.trim(content.replace(/\t/g,"")));
- 	// $(args.place).val("bar");
-	
-	// var place = $(args.place).prependTo('body');
-	// console.log('boo', place, $('<p>foo</p>'));
-	// place.val("boo");
-	// console.log('place',place);
-
 	// console.log("edit:", $(args.place), content);
 	
 };
@@ -795,7 +786,7 @@ jqw.macros.entry = function(args) {
 	
 	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
 	$(args.place).append(content);
-	console.log("Entry:", $(args.place), content);	
+	// console.log("Entry:", $(args.place), content);	
 };
 
 
@@ -816,9 +807,9 @@ jqw.applyPageTemplate = function(name) {
 };
 
 
-// Apply a template to build the UI.
+// Apply a template to an entry.
 jqw.applyTemplate = function(name, templateName) {
-	var template = $($('#'+jqw.entryID(templateName)).find('div.entry-content pre').clone());
+	var template = $($('#'+jqw.entryID(templateName)).find('div.entry-content pre').html());
 	templated =  jqw.expandMacros(template, name);
 	return templated;
 };
@@ -827,25 +818,26 @@ jqw.applyTemplate = function(name, templateName) {
 // find macros and execute them.
 jqw.expandMacros = function(destination, sourceEntry) {
 	
-	// destination.each(function(index) {
-	// 	console.log('this: ', $(this));
-	// });
-	
-	
-	
-	destination.find('*').each(function(index) {
-		data = $(this).metadata();
-		if(data && data.macro !== undefined)
+	var k, data;
+	destination.each(function(index) {
+		k = $(this);
+		k.children().each(function(index) {
+			jqw.expandMacros($(this), sourceEntry);
+		});
+		data = k.metadata();
+		if(data && data.macro) {
+			
 			if(jqw.macros[data.macro]) {
 				data['source'] = $('#'+jqw.entryID(sourceEntry));
-				data['place'] = $(this);
+				data['place'] = k;
 				jqw.macros[data.macro](data);
 			} else {
 				console.log('Error: No macro called ', data.macro);
 			}
+		}
 	});
 	
-	return $(destination.html());
+	return destination;
 };
 
 
