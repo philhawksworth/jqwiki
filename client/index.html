@@ -167,7 +167,17 @@ ul.tags li a:hover,ul.tags li a:focus {
 	border-top: solid 2px #1640A3;
 }
 
-a.addTag:link, a.addTag:visited,
+a.addTag:link, a.addTag:visited {
+	font-size:0.8em;
+	padding:1px 3px;
+/*	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;*/
+}
+a.addTag:hover, a.addTag:focus {
+	background-color:#1E52CD;
+	color:#fff;
+}
+
 a.doAddTag:link, a.doAddTag:visited,
 a.cancel:link, a.cancel:visited {
 	font-size: 0.8em;
@@ -179,7 +189,7 @@ a.cancel:link, a.cancel:visited {
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 }
-a.addTag:hover, a.addTag:focus,
+
 a.doAddTag:hover, a.doAddTag:focus,
 a.cancel:hover, a.cancel:focus {
 	background-color:#aaa;
@@ -841,12 +851,16 @@ jqw.addEventHandlers = function() {
 			var entry = $target.parents(jqw.api.entry);	
 			var newtag = $target.parents('div.tagUI').find('input').val();
 			var stored = jqw.findStoredEntry(entry);
+			var name = entry.find(jqw.api.title).text();
 			
 			// add the tag elements to the stored entry.
 			stored.find(jqw.api.tags).append("<li><a href='#"+ jqw.entryID(newtag) +"' rel='tag'>"+ newtag +"</a></li>");
 
 			// refresh the entry in the display to bring in the new data.
-			jqw.displayEntry(entry.find(jqw.api.title).text(), {position: 'replace', template: 'ViewTemplate'});
+			jqw.displayEntry(name, {position: 'replace', template: 'ViewTemplate'});
+
+			// focus ion the add tag button for easily adding another tag.
+			jqw.findDisplayedEntry(name).find('a.addTag').focus();
 
 			return false;
 		}
@@ -916,22 +930,14 @@ jqw.macros = {};
 jqw.macros.view = function(args) {
 	var content = args.source.find(jqw.api[args.data]).html();
 	$(args.place).append(content);
-	// console.log("View:", $(args.place), content);
-	
 };
 
 
 // Edit Macro.
 // Finds content from the store and use it to populate the input element from where the macro was called.
 jqw.macros.edit = function(args) {
-
-	var content = args.source.find(jqw.api[args.data]).html();	
-	
-	// console.log('args.place', args.place);
-	
+	var content = args.source.find(jqw.api[args.data]).html();		
 	$(args.place).val($.trim(content.replace(/\t/g,"")));
-	// console.log("edit:", $(args.place), content);
-	
 };
 
 
@@ -941,7 +947,6 @@ jqw.macros.entry = function(args) {
 	
 	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
 	$(args.place).append(content);
-	// console.log("Entry:", $(args.place), content);	
 };
 
 
@@ -949,28 +954,15 @@ jqw.macros.entry = function(args) {
 // Render a tags list with the UI to add more tags.
 jqw.macros.tags = function(args) {
 
-	var addBtn = "<a href='#' class='addTag' title='add a tag'>+</a>";
+	var addBtn = "<a href='#' class='addTag' title='add a tag'>add tag</a>";
 	var delBtn = "<a href='#' class='delTag' title='remove this tag'>x</a>";	
 	var tags = $(args.source.find(jqw.api.tags)).clone().find('li');
 	tags.each(function(index) {
 		console.log('tag: ', this);
 		// $(this).find('a').append(delBtn);
 	});
-
 	$(args.place).append(tags);	
 	tags.parents('ul.tags').after(addBtn);
-	
-	
-	
-	// console.log('tags: ', content);
-	
-
-	// content.append(addBtn);
-		// 
-		// console.log("tags:", $(args.place), content);	
-	
-
-
 };
 
 

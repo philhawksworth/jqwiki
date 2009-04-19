@@ -116,7 +116,17 @@ ul.tags li a:hover,ul.tags li a:focus {
 	border-top: solid 2px #1640A3;
 }
 
-a.addTag:link, a.addTag:visited,
+a.addTag:link, a.addTag:visited {
+	font-size:0.8em;
+	padding:1px 3px;
+/*	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;*/
+}
+a.addTag:hover, a.addTag:focus {
+	background-color:#1E52CD;
+	color:#fff;
+}
+
 a.doAddTag:link, a.doAddTag:visited,
 a.cancel:link, a.cancel:visited {
 	font-size: 0.8em;
@@ -128,7 +138,7 @@ a.cancel:link, a.cancel:visited {
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 }
-a.addTag:hover, a.addTag:focus,
+
 a.doAddTag:hover, a.doAddTag:focus,
 a.cancel:hover, a.cancel:focus {
 	background-color:#aaa;

@@ -5,22 +5,14 @@ jqw.macros = {};
 jqw.macros.view = function(args) {
 	var content = args.source.find(jqw.api[args.data]).html();
 	$(args.place).append(content);
-	// console.log("View:", $(args.place), content);
-	
 };
 
 
 // Edit Macro.
 // Finds content from the store and use it to populate the input element from where the macro was called.
 jqw.macros.edit = function(args) {
-
-	var content = args.source.find(jqw.api[args.data]).html();	
-	
-	// console.log('args.place', args.place);
-	
+	var content = args.source.find(jqw.api[args.data]).html();		
 	$(args.place).val($.trim(content.replace(/\t/g,"")));
-	// console.log("edit:", $(args.place), content);
-	
 };
 
 
@@ -30,7 +22,6 @@ jqw.macros.entry = function(args) {
 	
 	var content = $('#'+jqw.entryID(args.entry)).find(jqw.api.content).html();
 	$(args.place).append(content);
-	// console.log("Entry:", $(args.place), content);	
 };
 
 
@@ -38,28 +29,15 @@ jqw.macros.entry = function(args) {
 // Render a tags list with the UI to add more tags.
 jqw.macros.tags = function(args) {
 
-	var addBtn = "<a href='#' class='addTag' title='add a tag'>+</a>";
+	var addBtn = "<a href='#' class='addTag' title='add a tag'>add tag</a>";
 	var delBtn = "<a href='#' class='delTag' title='remove this tag'>x</a>";	
 	var tags = $(args.source.find(jqw.api.tags)).clone().find('li');
 	tags.each(function(index) {
 		console.log('tag: ', this);
 		// $(this).find('a').append(delBtn);
 	});
-
 	$(args.place).append(tags);	
 	tags.parents('ul.tags').after(addBtn);
-	
-	
-	
-	// console.log('tags: ', content);
-	
-
-	// content.append(addBtn);
-		// 
-		// console.log("tags:", $(args.place), content);	
-	
-
-
 };
 
 

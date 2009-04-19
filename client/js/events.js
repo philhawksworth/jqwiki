@@ -74,12 +74,16 @@ jqw.addEventHandlers = function() {
 			var entry = $target.parents(jqw.api.entry);	
 			var newtag = $target.parents('div.tagUI').find('input').val();
 			var stored = jqw.findStoredEntry(entry);
+			var name = entry.find(jqw.api.title).text();
 			
 			// add the tag elements to the stored entry.
 			stored.find(jqw.api.tags).append("<li><a href='#"+ jqw.entryID(newtag) +"' rel='tag'>"+ newtag +"</a></li>");
 
 			// refresh the entry in the display to bring in the new data.
-			jqw.displayEntry(entry.find(jqw.api.title).text(), {position: 'replace', template: 'ViewTemplate'});
+			jqw.displayEntry(name, {position: 'replace', template: 'ViewTemplate'});
+
+			// focus ion the add tag button for easily adding another tag.
+			jqw.findDisplayedEntry(name).find('a.addTag').focus();
 
 			return false;
 		}
