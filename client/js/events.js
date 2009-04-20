@@ -16,9 +16,6 @@ jqw.addEventHandlers = function() {
 		var $target = $(ev.target);
 		var entry = $target.parents(jqw.api.entry);	
 		
-		
-		console.log('click', $target);
-		
 		// entry links
 		if($target.is('a.entryLink')) {
 			$target.trigger('entryLinkClick.jqwiki');

@@ -818,9 +818,6 @@ jqw.addEventHandlers = function() {
 		var $target = $(ev.target);
 		var entry = $target.parents(jqw.api.entry);	
 		
-		
-		console.log('click', $target);
-		
 		// entry links
 		if($target.is('a.entryLink')) {
 			$target.trigger('entryLinkClick.jqwiki');
@@ -998,15 +995,14 @@ jqw.macros.entry = function(args) {
 // Render a tags list with the UI to add more tags.
 jqw.macros.tags = function(args) {
 
-	var addBtn = "<a href='#' class='addTag' title='add a tag'>add tag</a>";
-	var delBtn = "<a href='#' class='delTag' title='remove this tag'>x</a>";	
+	// var addBtn = "<a href='#' class='addTag' title='add a tag'>add tag</a>";
+	// var delBtn = "<a href='#' class='delTag' title='remove this tag'>x</a>";	
 	var tags = $(args.source.find(jqw.api.tags)).clone().find('li');
 	tags.each(function(index) {
-		console.log('tag: ', this);
-		$(this).find('a').append(delBtn);
+		$(this).find('a').append("<a href='#' class='delTag' title='remove this tag'>x</a>");
 	});
 	$(args.place).append(tags);	
-	tags.parents('ul.tags').after(addBtn);
+	tags.parents('ul.tags').after("<a href='#' class='addTag' title='add a tag'>add tag</a>");
 };
 
 
