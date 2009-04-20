@@ -16,7 +16,7 @@ html,body {
 	letter-spacing:-1px;	
 }
 #header h2 {
-	font-size: 1.1em;
+	font-size: 1em;
 	color: #666;
 }
 #controls {
@@ -63,12 +63,12 @@ div.hentry dl.meta {
 	display: inline;
 }
 div.hentry dl.meta dt {
-	color: #444;
+	color: #777;
 	display: inline;
 	margin-right: 0.5em;
 }
 div.hentry dl.meta dd {
-	color: #777;
+	color: #999;
 	display: inline;
 	margin-right: 1em;
 }
@@ -116,11 +116,43 @@ ul.tags li a:hover,ul.tags li a:focus {
 	border-top: solid 2px #1640A3;
 }
 
+ul.tags li a:link a.delTag, ul.tags li a:visited a.delTag {
+	font-family:arial, sans-serif;
+	font-weight:bold;
+	border-style:none;
+	background-color: transparent;
+	color: #888;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-bottom-left-radius: 0;
+	margin:3px -8px 3px 5px;
+	padding:4px 6px;
+
+}
+ul.tags li a:hover a.delTag, ul.tags li a:focus a.delTag {
+	border-style:none;
+	background-color: #1640A3;
+	color: #fff;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-bottom-left-radius: 0;
+}
+
+ul.tags li a a.delTag:hover, ul.tags li a a.delTag:focus {
+	border-style:none;
+	background-color: #000;
+	color: #fff;
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-bottom-left-radius: 0;
+}
+
 a.addTag:link, a.addTag:visited {
 	font-size:0.8em;
 	padding:1px 3px;
-/*	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;*/
 }
 a.addTag:hover, a.addTag:focus {
 	background-color:#1E52CD;
@@ -141,17 +173,13 @@ a.cancel:link, a.cancel:visited {
 
 a.doAddTag:hover, a.doAddTag:focus,
 a.cancel:hover, a.cancel:focus {
-	background-color:#aaa;
-	color:#000;
+	background-color:#1E52CD;
+	color:#fff;
 }
 
 a.default:link, a.default:visited {
-	background-color:#000;
-	color:#fff;
 }
-a.default:hover, a.default:focus {
-	background-color:#1E52CD;
-}
+
 
 
 div.tagUI {
@@ -161,7 +189,7 @@ div.tagUI {
 }
 div.tagUI input {
 	font-size:0.75em;
-	margin:0;
+	margin:0 2px 0 5px;
 	width:70px;
 }
 

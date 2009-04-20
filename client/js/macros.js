@@ -34,7 +34,7 @@ jqw.macros.tags = function(args) {
 	var tags = $(args.source.find(jqw.api.tags)).clone().find('li');
 	tags.each(function(index) {
 		console.log('tag: ', this);
-		// $(this).find('a').append(delBtn);
+		$(this).find('a').append(delBtn);
 	});
 	$(args.place).append(tags);	
 	tags.parents('ul.tags').after(addBtn);

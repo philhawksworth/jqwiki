@@ -16,6 +16,9 @@ jqw.addEventHandlers = function() {
 		var $target = $(ev.target);
 		var entry = $target.parents(jqw.api.entry);	
 		
+		
+		console.log('click', $target);
+		
 		// entry links
 		if($target.is('a.entryLink')) {
 			$target.trigger('entryLinkClick.jqwiki');
@@ -88,6 +91,22 @@ jqw.addEventHandlers = function() {
 			return false;
 		}
 		
+		// remove a tag.
+		if($target.is('a.delTag')) {
+			
+			var entry = $target.parents(jqw.api.entry);	
+			var tag = $target.parent().attr('href');
+			var stored = jqw.findStoredEntry(entry);
+			var name = entry.find(jqw.api.title).text();
+			
+			// remove the tag elements from the stored entry.
+			stored.find(jqw.api.tags).find('a[href="'+ tag +'"]').parents('li').remove();
+
+			// refresh the entry in the display to update the tags.
+			jqw.displayEntry(name, {position: 'replace', template: 'ViewTemplate'});
+
+			return false;
+		}
 		
 		
 	});
