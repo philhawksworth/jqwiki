@@ -69,30 +69,59 @@ jqw.displayEntry = function(name, options) {
 	};
 	var opt = $.extend({}, defaults, options);
 	
-	// don't open an entry more than once.
-	if(jqw.findDisplayedEntry(name).length > 0 && opt.position != 'replace') {
-		var entry = jqw.findDisplayedEntry(name);
-	} else {
-		var entry = jqw.applyTemplate(name, opt.template);
-	}
+	
+	console.log('displayEntry: ', opt);
+	
 	
 
+	if(jqw.findDisplayedEntry(name).length > 0) {
+		// the entry is aready displayed		
+
+		// if we are doing a replace
+		if(opt.position == 'replace') {
+			console.log('replace entry');
+			var e = jqw.findDisplayedEntry(name);
+			var entry = jqw.applyTemplate(name, opt.template);
+			entry.attr({id: name});
+			e.replaceWith(entry);
+		} else {
+			// Not a replace, just move the viewport to the entry.			
+			console.log('move to the entry');
+			var entry = jqw.findDisplayedEntry(name);
+			entry.entryDisplayEffect({animSrc: opt.sourceElement});
+		}
+				
+	} else {
+		// the entry needs to be dislayed. 		
+		var entry = jqw.applyTemplate(name, opt.template);
+
+		//add an id to the entry so that we can rapidly find it in the display.
+		entry.attr({id: name});
+
+		// display the entry in the appropriate place.
+		if(opt.position == 'top') {
+			$('#content').prepend(entry);		
+		} else if(opt.position == 'bottom') {
+			$('#content').append(entry);
+		} else if(opt.position == 'after') {
+			opt.sourceEntry.after(entry);
+		}
+		entry.entryDisplayEffect({animSrc: opt.sourceElement});
+
+	}	
 	
-	//add an id to the entry so that we can rapidly find it in the display.
-	entry.attr({id: name});
+	
+	// don't open an entry more than once.
+	// if(jqw.findDisplayedEntry(name).length > 0 && opt.position != 'replace') {
+	// 	console.log('displayed entry');
+	// 	var entry = jqw.findDisplayedEntry(name);
+	// } else {
+	// 	var entry = jqw.applyTemplate(name, opt.template);
+	// }
+	// 
+
+	
 
 		
-	// display the entry in the appropriate place.
-	if(opt.position == 'top') {
-		$('#content').prepend(entry);		
-	} else if(opt.position == 'bottom') {
-		$('#content').append(entry);
-	} else if(opt.position == 'replace') {
-		var e = jqw.findDisplayedEntry(name);
-		e.replaceWith(entry);
-	} else if(opt.position == 'after') {
-		opt.sourceEntry.after(entry);
-	}
-	entry.entryDisplayEffect({animSrc: opt.sourceElement});
 	
 };

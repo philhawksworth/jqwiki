@@ -13,6 +13,26 @@ jqw.api = {
 };
 
 
+// Options. Somewhere to store various data about the user and their preferences.
+jqw.options = {
+	username: 'PhilHawksworth',
+	animations: true,
+	autosave: true
+};
+
+
+// Some default values.
+jqw.defaults = {
+	newEntry : {
+		title: 'New entry',
+		content: ''
+	},
+	missingEntry : {
+		content: 'This entry doesn\'t exist yet. Go on and create it.'
+	}
+};
+
+
 // DOM ready. Let's boogie.
 $(document).ready(function() {
 	jqw.init();

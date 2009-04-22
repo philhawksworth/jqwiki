@@ -2,51 +2,56 @@
 jqw.addEventHandlers = function() {
 
 	$('#controls a').click(function(ev){
-		var btn = $(ev.target);
+		var $btn = $(ev.target);
 		
 		/*
 			TODO handle the global commands.
 		*/
+		if($btn.hasClass('newEntry')){
+			
+			console.log('create a new entry');
+			
+		}
 		
 		return false;
 	});
 	
 	
 	$('#content').click(function(ev) {
-		var $target = $(ev.target);
-		var entry = $target.parents(jqw.api.entry);	
+		var $btn = $(ev.target);
+		var entry = $btn.parents(jqw.api.entry);	
 		
 		// entry links
-		if($target.is('a.entryLink')) {
-			$target.trigger('entryLinkClick.jqwiki');
-			var name = jqw.entryName($target.attr('href'));
-			jqw.displayEntry(name, {position: 'after', sourceEntry: entry, sourceElement: $target});
-			$target.blur();	
+		if($btn.is('a.entryLink')) {
+			$btn.trigger('entryLinkClick.jqwiki');
+			var name = jqw.entryName($btn.attr('href'));
+			jqw.displayEntry(name, {position: 'after', sourceEntry: entry, sourceElement: $btn});
+			$btn.blur();	
 			return false;
 		}
 		
 		// entry control buttons
-		if($target.is('div.hentry div.controls a')) {
+		if($btn.is('div.hentry div.controls a')) {
 
 			var name = entry.attr('id');
 			
 			// edit button
-			if($target.attr('title') == 'edit') {
+			if($btn.attr('title') == 'edit') {
 				jqw.controls.editEntry(name);
 			}
 			
 			// cancel button
-			else if($target.attr('title') == 'cancel') {
+			else if($btn.attr('title') == 'cancel') {
 				jqw.controls.cancelEditEntry(name);
 			}
 			
 			// save button
-			else if($target.attr('title') == 'save') {
+			else if($btn.attr('title') == 'save') {
 				jqw.controls.saveEntry(name);
 			}
 			
 			// close button
-			else if($target.attr('title') == 'close') {
+			else if($btn.attr('title') == 'close') {
 				jqw.controls.closeEntry(name);
 			}
 	
@@ -55,24 +60,24 @@ jqw.addEventHandlers = function() {
 		
 		// tag UI
 		// show UI.
-		if($target.is('a.addTag')) {
+		if($btn.is('a.addTag')) {
 			var ui = $("<div class='tagUI'><input type='text'><a href='#' class='doAddTag default' title='add a tag'>tag it!</a><a href='#' class='cancel' title='cancel'>cancel</a></div>");
-			$target.hide().after(ui);
+			$btn.hide().after(ui);
 			ui.find('input').focus();			
 			return false;
 		}
 		
 		// cancel tag.
-		if($target.is('div.tagUI a.cancel')) {
-			$target.parents('div.tagUI').hide().prev().show();
+		if($btn.is('div.tagUI a.cancel')) {
+			$btn.parents('div.tagUI').hide().prev().show();
 			return false;
 		}
 		
 		// add tag.
-		if($target.is('div.tagUI a.doAddTag')) {
+		if($btn.is('div.tagUI a.doAddTag')) {
 			
-			var entry = $target.parents(jqw.api.entry);	
-			var newtag = $target.parents('div.tagUI').find('input').val();
+			var entry = $btn.parents(jqw.api.entry);	
+			var newtag = $btn.parents('div.tagUI').find('input').val();
 			var stored = jqw.findStoredEntry(entry);
 			var name = entry.find(jqw.api.title).text();
 			
@@ -89,10 +94,10 @@ jqw.addEventHandlers = function() {
 		}
 		
 		// remove a tag.
-		if($target.is('a.delTag')) {
+		if($btn.is('a.delTag')) {
 			
-			var entry = $target.parents(jqw.api.entry);	
-			var tag = $target.parent().attr('href');
+			var entry = $btn.parents(jqw.api.entry);	
+			var tag = $btn.parent().attr('href');
 			var stored = jqw.findStoredEntry(entry);
 			var name = entry.find(jqw.api.title).text();
 			
@@ -110,11 +115,11 @@ jqw.addEventHandlers = function() {
 	
 	// footer event handlers.
 	$('#footer a.entryLink').click(function(ev) {
-		var $target = $(ev.target);
-		$target.trigger('entryLinkClick.jqwiki');
-		var name = jqw.entryName($target.attr('href'));
-		jqw.displayEntry(name, {position: 'bottom', sourceElement: $target});
-		$target.blur();	
+		var $btn = $(ev.target);
+		$btn.trigger('entryLinkClick.jqwiki');
+		var name = jqw.entryName($btn.attr('href'));
+		jqw.displayEntry(name, {position: 'bottom', sourceElement: $btn});
+		$btn.blur();	
 		return false;
 	});
 		
