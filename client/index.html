@@ -1125,6 +1125,9 @@ jqw.displayEntry = function(name, options) {
 			console.log('move to the entry');
 			var entry = jqw.findDisplayedEntry(name);
 			entry.entryDisplayEffect({animSrc: opt.sourceElement});
+
+			var targetOffset = entry.offset().top;
+			$('html,body').animate({scrollTop: targetOffset}, 1000);
 		}
 				
 	} else {
