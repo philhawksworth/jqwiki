@@ -31,10 +31,11 @@ jqw.controls.saveEntry = function(name) {
 	// save title to store.
 	entryStore.find(jqw.api.title).html(entry.find(jqw.api.title).val());
 		
-	// if title changed, then update entry identifier and refresh display.
-	
 	// revert to the viewTemplate with the revised data.
 	jqw.displayEntry(name, {position:'replace', template:'ViewTemplate'});
+	
+	// if title changed, then update entry identifier and refresh display.
+	jqw.refreshDisplay();
 	
 	// save the document.
 };

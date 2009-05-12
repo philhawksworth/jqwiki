@@ -12,7 +12,35 @@ jqw.addEventHandlers = function() {
 			console.log('create a new entry');
 			
 		}
+
+		if($btn.hasClass('options')){
+			
+			if($('#jqwikiOptions').length > 0){
+				var panel = $('#jqwikiOptions');
+			} else {
+				var h ='<div id="jqwikiOptions"></div>';
+				var panel = $(h).hide().prependTo('body');				
+			}
+			if(panel.hasClass('open')){
+
+				jqw.gatherOptions();
+				// $('div.options:not(#store div) input').each(function() {
+				// 	var opt = $(this).attr('id');
+				// 	jqw.options[opt] = $(this).val();
+				// });
+			} else {
+				// populate the div from an entry
+				var options = {
+					template: 'SimpleTemplate',
+					place: panel
+				};
+				jqw.displayEntry('GlobalOptions', options);
+			}
+			// toggle the panel open or closed.
+			panel.slideToggle().toggleClass('open');
+		}
 		
+		$btn.blur();
 		return false;
 	});
 	

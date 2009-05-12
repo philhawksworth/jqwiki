@@ -180,6 +180,15 @@ a.cancel:hover, a.cancel:focus {
 a.default:link, a.default:visited {
 }
 
+a.missing:link, a.missing:visited {
+	font-style:italic;
+	border-bottom-style:dotted;
+}
+a.missing:hover, a.missing:focus {
+	background-color:#333;
+	border-color:#000;
+}
+
 
 
 div.tagUI {
@@ -255,3 +264,44 @@ pre.code {
 }
 
 #ghost {background-color:#bbb; border:solid 1px #000; z-index:10; position:absolute;}
+
+#jqwikiOptions {
+	background-color:#191919;
+	border-top:solid 5px #111;
+	color:#ddd;
+}
+
+#jqwikiOptions div.options {
+	padding:2em;
+}
+
+#jqwikiOptions h1 {
+	color:#ccc;
+	margin:0 0 10px 0;
+}
+
+#jqwikiOptions label {
+	color:#999;
+}
+
+#jqwikiOptions input {
+	margin-left:10px;
+}
+
+
+#hazard {
+	margin-top:2em;	
+}
+	#hazard div.banner_top {
+		background-color:#333;
+		border-bottom:6px dashed #CCA71D;
+		margin-bottom:-4px;
+	}
+	#hazard div.banner_bottom {
+		background-color:#222;
+		border-bottom:6px dashed #6C5A14;
+		margin-bottom:-4px;
+	}
+
+
+

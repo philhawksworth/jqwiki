@@ -65,42 +65,40 @@ jqw.displayEntry = function(name, options) {
 		template: 'ViewTemplate',
 		position: 'bottom',
 		sourceEntry: null,
-		sourceElement: null
+		sourceElement: null,
+		place: null
 	};
 	var opt = $.extend({}, defaults, options);
 	
-	
-	console.log('displayEntry: ', opt);
-	
-	
+	console.log('display', opt);
 
+	// the entry is aready displayed		
 	if(jqw.findDisplayedEntry(name).length > 0) {
-		// the entry is aready displayed		
-
 		// if we are doing a replace
 		if(opt.position == 'replace') {
-			console.log('replace entry');
 			var e = jqw.findDisplayedEntry(name);
 			var entry = jqw.applyTemplate(name, opt.template);
 			entry.attr({id: name});
 			e.replaceWith(entry);
 		} else {
 			// Not a replace, just move the viewport to the entry.			
-			console.log('move to the entry');
 			var entry = jqw.findDisplayedEntry(name);
 			entry.entryDisplayEffect({animSrc: opt.sourceElement});
-
-			var targetOffset = entry.offset().top;
-			$('html,body').animate({scrollTop: targetOffset}, 1000);
+			$('html,body').animate({scrollTop: entry.offset().top}, 500);
 		}
 				
 	} else {
 		// the entry needs to be dislayed. 		
 		var entry = jqw.applyTemplate(name, opt.template);
-
 		//add an id to the entry so that we can rapidly find it in the display.
+		
+		if(opt.place) {
+			opt.place.html(entry);
+			return;
+		}
+		
 		entry.attr({id: name});
-
+		
 		// display the entry in the appropriate place.
 		if(opt.position == 'top') {
 			$('#content').prepend(entry);		
@@ -110,21 +108,21 @@ jqw.displayEntry = function(name, options) {
 			opt.sourceEntry.after(entry);
 		}
 		entry.entryDisplayEffect({animSrc: opt.sourceElement});
-
 	}	
-	
-	
-	// don't open an entry more than once.
-	// if(jqw.findDisplayedEntry(name).length > 0 && opt.position != 'replace') {
-	// 	console.log('displayed entry');
-	// 	var entry = jqw.findDisplayedEntry(name);
-	// } else {
-	// 	var entry = jqw.applyTemplate(name, opt.template);
-	// }
-	// 
-
-	
-
 		
+};
+
+
+jqw.refreshDisplay = function(){
+
+	// store a reference to the Store for better performance.
+	var store = $('#store');
+	
+	// Show links to missing entries as such.
+	$('#wiki a.entryLink').each(function(index) {
+		if($('#'+jqw.entryID($(this).text()), store).length == 0) {
+			$(this).addClass('missing');			
+		}
+	});
 	
 };
