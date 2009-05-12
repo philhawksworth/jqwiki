@@ -1,9 +1,11 @@
 system: DefaultTheme.html
 system: ViewTemplate.html
 system: EditTemplate.html
+system: SimpleTemplate.html
 system: ViewEntryControls.html
 system: EditEntryControls.html
 system: GlobalControls.html
+system: GlobalOptions.html
 system: DefaultEntries.html
 system: SiteTitle.html
 system: SiteSubtitle.html
