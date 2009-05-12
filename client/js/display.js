@@ -120,7 +120,7 @@ jqw.refreshDisplay = function(){
 	
 	// Show links to missing entries as such.
 	$('#wiki a.entryLink').each(function(index) {
-		if($('#'+jqw.entryID($(this).text()), store).length == 0) {
+		if($($(this).attr('href'), store).length == 0) {
 			$(this).addClass('missing');			
 		}
 	});
