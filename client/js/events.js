@@ -9,7 +9,7 @@ jqw.addEventHandlers = function() {
 		*/
 		if($btn.hasClass('newEntry')){
 			
-			console.log('create a new entry');
+			jqw.log('create a new entry');
 			
 		}
 

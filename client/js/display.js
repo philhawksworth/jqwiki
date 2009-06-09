@@ -35,7 +35,7 @@ jqw.expandMacros = function(destination, sourceEntry) {
 				data['place'] = k;
 				jqw.macros[data.macro](data);
 			} else {
-				console.log('Error: No macro called ', data.macro);
+				jqw.log('Error: No macro called ', data.macro);
 			}
 		}
 	});
@@ -70,7 +70,7 @@ jqw.displayEntry = function(name, options) {
 	};
 	var opt = $.extend({}, defaults, options);
 	
-	console.log('display', opt);
+	jqw.log('display', opt);
 
 	// the entry is aready displayed		
 	if(jqw.findDisplayedEntry(name).length > 0) {

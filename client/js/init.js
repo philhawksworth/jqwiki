@@ -2,6 +2,16 @@
 var jqw = {};
 
 
+// a logging utility.
+jqw.log = function(){
+	
+	if(window.console && window.console.log) {
+		console.log(arguments);
+	}
+	
+};
+
+
 // entry API.
 // What are the query expressions to return the desired entry elements?
 jqw.api = {
@@ -108,7 +118,7 @@ jqw.execute = function(args) {
 		try {
 			(new Function( scripts[s] ))();
 		} catch(e){
-			console.log(e.message);
+			jqw.log(e.message);
 		}
 	};
 };
