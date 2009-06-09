@@ -31,7 +31,28 @@ a.entryLink:hover,a.entryLink:focus {
 div.system {
 	display: none;
 }
+
+#beta_banner {
+	padding:4px 20px 4px;
+	display:block;
+	background-color:#1C53CE;
+	color:#A9CBFF;
+	text-align:right;
+	font-size:0.9em;
+}
+
+#beta_banner a:link, #beta_banner a:visited {
+	padding:3px;
+	color:#fff;
+}
+#beta_banner a:hover, #beta_banner a:focus {
+	color:#fff;
+	background-color:#0B245A;
+}
+
 /* FOUC avoideance. */
 html.js > div {
 	display: none;
 }
+
+
